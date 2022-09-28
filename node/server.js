@@ -1,16 +1,22 @@
-const { Client } = require("pg");
+const express = require("express");
+const morgan = require("morgan");
+const cors = require("cors");
+const app = express();
+const bodyParser = require("body-parser");
+const iniparser = require("iniparser");
+const port = process.env.PORT || 3003;
 
-const client = new Client({
-  user: "h4",
-  host: "192.168.219.204",
-  database: "typescript-test",
-  password: "h42020)(",
-  port: 5432,
-});
+const config = iniparser.parseSync("./config.ini");
+const api = require("./api");
 
-client.connect();
+app.use(cors());
+app.use(morgan("dev"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-client.query("SELECT NOW()", (err, res) => {
-  console.log(err, res);
-  client.end();
+const LOGIN_ROUTER = require("./router/LoginRouter");
+app.post(api.login, LOGIN_ROUTER);
+
+app.listen(port, () => {
+  console.log(`express is running on ${port}`);
 });
