@@ -1,3 +1,4 @@
+import { isEmpty } from "@/utils/common/commonUtils";
 import React from "react";
 import {
   Navigate,
@@ -12,11 +13,10 @@ type RequireAuthProps = {
   auth?: any;
 };
 
-const RequireAuth = ({ allowedRoles, auth }: RequireAuthProps) => {
+const RequireAuth = (auth: any) => {
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
-  return auth ? (
-    <Navigate to="/Dashboard" state={{ from: location }} replace />
+  return !isEmpty(auth) ? (
+    <Outlet />
   ) : (
     <Navigate to="/login" state={{ from: location }} replace />
   );

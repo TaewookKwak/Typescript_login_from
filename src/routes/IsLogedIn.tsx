@@ -1,8 +1,9 @@
+import { isEmpty } from "@/utils/common/commonUtils";
 import React from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 type IsLoggedInProps = {
-  auth?: string;
+  auth?: any;
   location?: any;
 };
 
@@ -12,7 +13,7 @@ const IsLoggedIn = ({ auth, location }: IsLoggedInProps) => {
 
   return (
     <>
-      {auth ? (
+      {!isEmpty(auth) ? (
         <Navigate to="/Dashboard" state={{ from: next }} replace />
       ) : (
         <Outlet />

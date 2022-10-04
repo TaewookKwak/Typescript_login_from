@@ -1,4 +1,5 @@
 import React from "react";
+import DashboardContainer from "@/pages/DASHBOARD/containers/dashboardContainer";
 
 const Dashboard = () => {
   let arr: string[] = ["kim", "park"];
@@ -18,7 +19,7 @@ const Dashboard = () => {
   function func(x: number): number {
     return x * 2;
   }
-  return <div>대쉬보드</div>;
+  return <DashboardContainer />;
 };
 
 export default Dashboard;

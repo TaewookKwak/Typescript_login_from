@@ -1,6 +1,37 @@
-import React from "react";
+import { login } from "@/services/api/api";
+import { getSessionStorage, setItem } from "@services/sessionStorage/session";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const LoginContainer = () => {
+  const [userid, setUserid] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const onChangeLoginForm = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    key: any
+  ) => {
+    const { name, value } = event.target;
+    if (name === "userid") {
+      setUserid(value);
+    } else if (name === "password") {
+      setPassword(value);
+    }
+  };
+
+  const onLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const payload = {
+      userid,
+      password,
+    };
+
+    setItem("auth", payload);
+
+    navigate("/Dashboard", { replace: true });
+    // login(payload);
+  };
   return (
     <div className="container">
       <div className="screen">
@@ -9,7 +40,9 @@ const Login = () => {
             <div className="login__field">
               <i className="login__icon fas fa-user"></i>
               <input
+                onChange={(e) => onChangeLoginForm(e, "userid")}
                 type="text"
+                name="userid"
                 className="login__input"
                 placeholder="User name / Email"
               />
@@ -17,24 +50,18 @@ const Login = () => {
             <div className="login__field">
               <i className="login__icon fas fa-lock"></i>
               <input
+                onChange={(e) => onChangeLoginForm(e, "password")}
                 type="password"
+                name="password"
                 className="login__input"
                 placeholder="Password"
               />
             </div>
-            <button className="button login__submit">
+            <button onClick={onLogin} className="button login__submit">
               <span className="button__text">Log In Now</span>
               <i className="button__icon fas fa-chevron-right"></i>
             </button>
           </form>
-          <div className="social-login">
-            <h3>log in via</h3>
-            <div className="social-icons">
-              <a href="#" className="social-login__icon fab fa-instagram"></a>
-              <a href="#" className="social-login__icon fab fa-facebook"></a>
-              <a href="#" className="social-login__icon fab fa-twitter"></a>
-            </div>
-          </div>
         </div>
         <div className="screen__background">
           <span className="screen__background__shape screen__background__shape4"></span>
@@ -47,4 +74,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginContainer;
