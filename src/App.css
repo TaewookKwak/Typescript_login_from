@@ -7,9 +7,12 @@
   --theme-color1: #161c24;
   --theme-color2: #212b36;
   --theme-color3: #333d48;
+
   --theme-font-color1: white;
   --theme-font-color2: #1ccaff;
-  --theme-btn-color1: #1890ff;
+  --theme-btn-color1: #1ccaff;
+  --theme-btn-color2: #1890ff;
+  --theme-selet-border-color1: gray;
 
   --font-size-verylarge: 4em;
   --font-size-large: 2em;
@@ -17,7 +20,6 @@
   --font-size-small: 0.5em;
 
   width: 100%;
-  height: 100%;
 }
 
 * {
@@ -141,13 +143,70 @@ main .subtitle {
 select {
   width: 15em;
   height: 3em;
+  background-color: var(--theme-color2);
+  color: white;
+  border: 2px solid var(--theme-selet-border-color1);
+  border-radius: 10px;
+}
+
+select:hover {
+  border: 2px solid white;
+}
+
+select:focus-visible {
+  outline: none;
+}
+
+option {
+  height: 4em;
 }
 
 .card {
-  height: 25em;
+  height: 35em;
   margin: 1em;
   background-color: var(--theme-color2);
   border-radius: 1em;
+
+  padding: 2em;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.card__title {
+  flex: 1;
+  font-size: var(--font-size-midium);
+  font-weight: 800;
+}
+
+.card__table {
+  flex: 8;
+  width: 100%;
+  background-color: #1890ff;
+  margin: 1em 0;
+}
+
+.card__table__btn-container {
+  flex: 1;
+}
+
+.card__table__btn {
+  height: 3em;
+  padding: 1em;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: var(--theme-btn-color1);
+  transition: all 400ms;
+  color: black;
+  font-weight: 700;
+  margin-right: 1em;
+}
+
+.card__table__btn:hover {
+  background-color: var(--theme-btn-color2);
+  color: white;
 }
 
 .container {

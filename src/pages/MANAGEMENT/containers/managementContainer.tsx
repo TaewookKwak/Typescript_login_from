@@ -14,8 +14,18 @@ const ManagementContainer = () => {
         </div>
       </div>
 
+      <div className="card">
+        <p className="card__title">측위자원 수집 데이터세트</p>
+        <div className="card__table"></div>
+        <div className="card__table__btn-container">
+          <button className="card__table__btn">Post Processing</button>
+          <button className="card__table__btn">Delete Dataset</button>
+        </div>
+      </div>
+
       <div className="card"></div>
 
+      <div className="card"></div>
       <div className="card"></div>
     </main>
   );

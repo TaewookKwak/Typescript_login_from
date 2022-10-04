@@ -9,7 +9,6 @@ type IsLoggedInProps = {
 
 const IsLoggedIn = ({ auth, location }: IsLoggedInProps) => {
   const next = useLocation();
-  console.log(next);
 
   return (
     <>
