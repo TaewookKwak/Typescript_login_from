@@ -2,7 +2,7 @@ import React from "react";
 
 const DashboardContainer = () => {
   return (
-    <main>
+    <main className="main_dashboard">
       <div className="dashboard">
         <p className="title">
           측위자원

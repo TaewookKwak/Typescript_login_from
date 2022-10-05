@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-
+const ICON = require("@/assets/imgs/icon_machine_learning2.png");
 const Header = () => {
+  const header = useRef<HTMLDivElement>(null);
   const location = useLocation();
-  console.log(location.pathname);
+  window.addEventListener("scroll", (e) => {
+    if (window.scrollY >= 100) {
+      header.current?.classList.add("active");
+    } else {
+      header.current?.classList.remove("active");
+    }
+  });
 
   const onSelectMenu = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const event = e.target as HTMLDivElement;
     const pages = event.parentElement?.children;
   };
   return (
-    <header>
-      <h1>측위알고리즘 시험 검증 시스템</h1>
+    <header ref={header}>
+      <div className="header_title">
+        <img className="icon" src={ICON} alt="" />
+        <h1>측위알고리즘 시험 검증 시스템</h1>
+      </div>
+
       <nav>
         <NavLink
           onClick={(e) => onSelectMenu(e)}

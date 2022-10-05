@@ -8,7 +8,7 @@ import RequireAuth from "@/routes/RequireAuth";
 import Login from "@/pages/LOGIN/login";
 import Dashboard from "@/pages/DASHBOARD/dashboard";
 import { getItem, getSessionStorage } from "@services/sessionStorage/session";
-import Tranining from "@/pages/TARAINING/tranining";
+import Tranining from "@/pages/TRAINING/tranining";
 import Monitoring from "@/pages/MONITORING/monitoring";
 import Management from "@/pages/MANAGEMENT/management";
 function App() {
