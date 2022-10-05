@@ -2,7 +2,7 @@ import React from "react";
 
 const TrainingBoxView = () => {
   return (
-    <div className="multi-box mg-bottom-05">
+    <div className="multi-box">
       <div className="multil-box__container">
         <p>Site : ETRI | 빌딩</p>
         <select name="" id="">

@@ -149,7 +149,7 @@ main .flex-row {
 }
 
 main .flex-row .card {
-  margin: 0.5em 1em;
+  /* margin: 0.5em 1em; */
 }
 
 .dashboard {
@@ -340,6 +340,70 @@ option {
   margin-top: 1em;
 }
 
+.spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+.toggle-switch {
+  position: relative;
+}
+
+.toggle-switch_bar {
+  background-color: gray;
+  border-radius: 1em;
+  width: 3em;
+  height: 1.5em;
+}
+
+.toggle-switch_button {
+  background-color: white;
+  width: 1.4em;
+  height: 1.2em;
+  border-radius: 50%;
+  position: absolute;
+  top: -10%;
+  right: 0%;
+}
+
+#switch {
+  display: none;
+}
+
+#switch + label {
+  position: relative;
+  margin: 1em;
+}
+
+#switch:checked + label {
+  background: var(--theme-btn-color1);
+  position: relative;
+}
+
+#switch + label::before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  transform: translateY(-50%);
+  width: 0.8em;
+  height: 0.8em;
+
+  border-radius: 50%;
+  background: #fff;
+
+  transition: 400ms;
+}
+
+#switch:checked + label::before {
+  top: 50%;
+  /* left: inherit;
+  right: 3px; */
+  left: calc(100% - 0.4em - 3px);
+  transform: translate(-50%, -50%);
+}
 .container {
   display: flex;
   align-items: center;

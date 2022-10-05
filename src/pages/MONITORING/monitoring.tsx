@@ -1,11 +1,8 @@
 import React from "react";
+import MonitoringContainer from "@/pages/MONITORING/containers/monitoringContainer";
 
 const Monitoring = () => {
-  return (
-    <div>
-      <h1>모니터링</h1>
-    </div>
-  );
+  return <MonitoringContainer />;
 };
 
 export default Monitoring;

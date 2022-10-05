@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import TrainingBoxView from "@/pages/TRAINING/views/trainingBoxView";
 import TrainingCardView from "@/pages/TRAINING/views/trainingCardView";
 import TrainingCardInfoView from "@/pages/TRAINING/views/trainingCardInfoView";
-
 export interface FileListInterface {
   filename: string;
   size: string;

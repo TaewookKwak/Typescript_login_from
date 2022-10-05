@@ -12,7 +12,11 @@ const TrainingCardView = ({ title, btnList }: CardViewProps): JSX.Element => {
       <div className="card__table"></div>
       <div className="card__table__btn-container">
         {btnList.map((list) => {
-          return <button className="card__table__btn">{list}</button>;
+          return (
+            <button key={list} className="card__table__btn">
+              {list}
+            </button>
+          );
         })}
       </div>
     </div>

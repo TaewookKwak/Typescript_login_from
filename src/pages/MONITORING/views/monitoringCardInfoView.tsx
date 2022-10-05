@@ -1,22 +1,26 @@
 import React from "react";
-import { FileListInterface } from "@/pages/TRAINING/containers/trainingContainer";
+import { FileListInterface } from "@/pages/MONITORING/containers/monitoringContainer";
 
 type CardViewProps = {
   title: string;
   fileList: Array<FileListInterface>;
 };
 
-const TrainingCardInfoView = ({ title, fileList }: CardViewProps) => {
+const MonitoringCardInfoView = ({ title, fileList }: CardViewProps) => {
   return (
     <div className="card flex2">
       <p className="card__title">{title}</p>
       <div className="card__dataset">
+        <p className="card__dataset__list">Scenario</p>
+        <p className="card__dataset__list">Site</p>
+        <p className="card__dataset__list">Building</p>
+        <p className="card__dataset__list">Floor</p>
+        <p className="card__dataset__list">Route(waypoints)</p>
+        <p className="card__dataset__list">Start time</p>
+        <p className="card__dataset__list">End time</p>
         <p className="card__dataset__list">User</p>
-        <p className="card__dataset__list">Route file</p>
-        <p className="card__dataset__list">backpack</p>
-        <p className="card__dataset__list">phonemodel</p>
-        <p className="card__dataset__list">length</p>
-        <p className="card__dataset__list">Dataset Filepath</p>
+        <p className="card__dataset__list">Ground Truth</p>
+        <p className="card__dataset__list">Phone Model</p>
       </div>
       <div className="card__files">
         <div className="card_files__th">
@@ -43,4 +47,4 @@ const TrainingCardInfoView = ({ title, fileList }: CardViewProps) => {
   );
 };
 
-export default TrainingCardInfoView;
+export default MonitoringCardInfoView;

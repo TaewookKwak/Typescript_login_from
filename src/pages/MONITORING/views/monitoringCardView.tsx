@@ -1,0 +1,17 @@
+import React from "react";
+
+type CardViewProps = {
+  title: string;
+};
+
+const MonitoringCardView = ({ title }: CardViewProps): JSX.Element => {
+  return (
+    <div className="card flex8">
+      <p className="card__title">{title}</p>
+      <div className="card__table"></div>
+      <div className="card__table__btn-container"></div>
+    </div>
+  );
+};
+
+export default MonitoringCardView;

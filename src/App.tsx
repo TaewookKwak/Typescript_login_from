@@ -12,6 +12,8 @@ import RequireAuth from "@/routes/RequireAuth";
 // import Monitoring from "@/pages/MONITORING/monitoring";
 // import Management from "@/pages/MANAGEMENT/management";
 
+import { MutatingDots } from "react-loader-spinner";
+
 // lazy 추가 221005
 const Login = React.lazy(() => import("@/pages/LOGIN/login"));
 const Dashboard = React.lazy(() => import("@/pages/DASHBOARD/dashboard"));
@@ -24,7 +26,15 @@ function App() {
   console.log(auth);
 
   return (
-    <Suspense fallback={<div className="spin_wr">loading</div>}>
+    <Suspense
+      fallback={
+        <MutatingDots
+          wrapperClass="spinner"
+          color="#1ccaff"
+          secondaryColor="#1ccaff"
+        />
+      }
+    >
       <Routes>
         <Route path="/" element={<MyLayout />}>
           <Route element={<IsLoggedIn auth={auth} />}>
