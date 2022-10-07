@@ -1,4 +1,8 @@
-import { getKeysInObject } from "@/utils/common/commonUtils";
+import {
+  getKeysInObject,
+  sortAscendingBy,
+  sortDescendingBy,
+} from "@/utils/common/commonUtils";
 import React from "react";
 import { useState } from "react";
 interface TableDataInterface {
@@ -13,30 +17,24 @@ const Table = ({ tableData }: TableDataType) => {
   const [data, setData] = useState<Array<TableDataInterface>>(tableData);
   const tableColumn = getKeysInObject(tableData[0]);
 
-  function sortBy(filed: string) {
-    return function compare(a: any, b: any) {
-      if (a[filed] < b[filed]) {
-        return -1;
-      }
-      if (a[filed] > b[filed]) {
-        return 1;
-      }
-      return 0;
-    };
-  }
+  const onSort = (
+    list: string,
+    event: React.MouseEvent<HTMLTableHeaderCellElement, MouseEvent>
+  ) => {
+    const target = event.target as HTMLDivElement;
+    const dataset = target.dataset;
 
-  const onSort = (list: string) => {
-    const newTableData: Array<TableDataInterface> = data.sort(sortBy(list));
+    let newTableData: Array<TableDataInterface> = [{}];
+
+    if (dataset.ariaSort === "acsending") {
+      dataset.ariaSort = "decsending";
+      newTableData = data.sort(sortAscendingBy(list));
+    } else if (dataset.ariaSort === "decsending") {
+      dataset.ariaSort = "acsending";
+      newTableData = data.sort(sortDescendingBy(list));
+    }
 
     setData([...newTableData]);
-
-    console.log(data);
-
-    // const sortedTableData: Array<TableDataInterface> = tableData.map((data) => {
-    //   console.log(data);
-
-    //   return [];
-    // });
   };
 
   return (
@@ -47,7 +45,8 @@ const Table = ({ tableData }: TableDataType) => {
             {tableColumn.map((list) => {
               return (
                 <th
-                  onClick={() => onSort(list)}
+                  data-aria-sort="acsending"
+                  onClick={(e) => onSort(list, e)}
                   className="fixed-header clickable"
                 >
                   {list}
@@ -58,8 +57,6 @@ const Table = ({ tableData }: TableDataType) => {
         </thead>
         <tbody>
           {data.map((list) => {
-            console.log(list);
-
             return (
               <tr>
                 {tableColumn.map((column) => {
