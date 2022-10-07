@@ -9,6 +9,7 @@ export interface FileListInterface {
 }
 
 const MonitoringContainer = () => {
+  const [toggleSwitchValue, setToggleSwitchValue] = useState<boolean>(false);
   let btnList: string[] = ["Post Processing", "Delete Dataset"];
   const btnList2: string[] = [
     "Create Training Dataset",
@@ -29,9 +30,10 @@ const MonitoringContainer = () => {
       size: "20KB",
     },
   ];
+
   return (
     <main>
-      <MonitoringBoxView />
+      <MonitoringBoxView setToggleSwitchValue={setToggleSwitchValue} />
       <div className="flex-row">
         <MonitoringCardView title="수집작업 진행상황 모니터링(Collection Status Map)" />
         <MonitoringCardInfoView title="상세정보" fileList={fileList} />

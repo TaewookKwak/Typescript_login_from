@@ -32,6 +32,34 @@ body {
   color: white;
 }
 
+*::-webkit-scrollbar {
+  width: 16px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+*::-webkit-scrollbar-track {
+  background-color: black;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
+}
+
+/* 공통 */
+
+.clickable {
+  cursor: pointer;
+}
+
+.fixed-header {
+  background-color: var(--theme-color2);
+  position: sticky;
+  top: 0;
+}
+/*  */
+
 .main_dashboard {
   height: 100vh;
   margin-top: -80px;
@@ -98,6 +126,7 @@ nav .link {
   text-decoration: none;
   color: white;
   transition: all 0.45s;
+  font-weight: 700;
 }
 
 nav .link:hover {
@@ -250,7 +279,7 @@ option {
 }
 
 .card {
-  height: 35em;
+  height: 40em;
   margin: 1em;
   background-color: var(--theme-color2);
   border-radius: 1em;
@@ -264,10 +293,12 @@ option {
 
 .card.flex8 {
   flex: 8;
+  width: 100%;
 }
 
 .card.flex2 {
   flex: 2;
+  min-width: 300px;
 }
 
 .card__title {
@@ -278,9 +309,47 @@ option {
 
 .card__table {
   flex: 8;
-  width: 100%;
-  background-color: #1890ff;
+  height: 100%;
+  overflow: auto;
   margin: 1em 0;
+}
+
+.card__table table {
+  min-width: 100%;
+}
+
+.card__table th {
+  font-weight: 700;
+  padding: 0.5em;
+}
+
+.fixed-header {
+  background-color: var(--theme-color2);
+  position: sticky;
+  top: 0;
+}
+
+.fixed-header.active {
+  -webkit-box-shadow: 0px 10px 13px -7px #000000,
+    0px -7px 50px 7px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 10px 13px -7px #000000, 0px -7px 50px 7px rgba(0, 0, 0, 0.08);
+}
+
+.card__table th::before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  transform: translateY(50%);
+  border-right: 2px solid rgba(211, 211, 211, 0.194);
+
+  height: 50%;
+}
+
+.card__table td {
+  padding: 1em 0.5em;
+  border-bottom: 2px solid rgba(211, 211, 211, 0.194);
 }
 
 .card__table__btn-container {
@@ -315,6 +384,7 @@ option {
 .card__files {
   flex: 4;
   overflow-y: auto;
+  margin-top: 2em;
 }
 
 .card_files__th {
@@ -409,6 +479,21 @@ option {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+}
+
+input {
+  width: 15em;
+  height: 3em;
+  background-color: var(--theme-color2);
+  color: white;
+  border: 2px solid var(--theme-selet-border-color1);
+  border-radius: 10px;
+  padding: 5px;
+  outline: none;
+}
+
+input:hover {
+  border: 2px solid white;
 }
 
 .screen {

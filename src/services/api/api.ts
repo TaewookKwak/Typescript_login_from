@@ -28,7 +28,7 @@ const request = async (
       timeout: 1000 * 10,
       params: {},
     };
-    let response = null;
+    let response;
     if (option.type === "post") {
       response = await axios.post(`${page}`, param, reqOption);
     } else if (option.type === "put") {

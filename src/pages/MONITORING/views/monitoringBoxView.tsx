@@ -1,6 +1,11 @@
+import SwitchToggle from "@/components/toggleSwitch";
 import React from "react";
 
-const MonitoringBoxView = () => {
+interface ToggleSwitchProps {
+  setToggleSwitchValue: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const MonitoringBoxView = ({ setToggleSwitchValue }: ToggleSwitchProps) => {
   return (
     <div className="multi-box">
       <div className="multil-box__container">
@@ -11,16 +16,17 @@ const MonitoringBoxView = () => {
           <option value="3001">3001</option>
         </select>
 
-        <input
-          type="checkbox"
-          id="switch"
-          onClick={(e: React.MouseEvent<HTMLInputElement>) => {
-            const target = e.target as HTMLInputElement;
-
-            console.log(target.checked);
-          }}
+        <SwitchToggle
+          setToggleSwitchValue={setToggleSwitchValue}
+          title="Update Current Position"
         />
-        <label htmlFor="switch" className="toggle-switch_bar"></label>
+
+        {/* <label htmlFor="input">deley time</label> */}
+        <input
+          style={{ margin: "1em" }}
+          type="text"
+          placeholder="Deley time (sec)"
+        />
       </div>
     </div>
   );

@@ -7,6 +7,8 @@ export interface FileListInterface {
   size: string;
 }
 
+const FAKE_JSON_DATA = require("@/assets/json/fake.json");
+
 const TrainingContainer = () => {
   const btnList: string[] = ["Run Training", "Delete Dataset"];
   const btnList2: string[] = ["Cancel Training", "Delete Dataset"];
@@ -24,12 +26,17 @@ const TrainingContainer = () => {
       size: "20KB",
     },
   ];
+
   return (
     <main>
       <TrainingBoxView />
       <div className="flex-column">
         <div className="flex-row">
-          <TrainingCardView title="학습 데이터세트 목록" btnList={btnList} />
+          <TrainingCardView
+            title="학습 데이터세트 목록"
+            btnList={btnList}
+            tableData={FAKE_JSON_DATA}
+          />
           <TrainingCardInfoView
             title="데이터세트 상세정보"
             fileList={fileList}
@@ -37,7 +44,11 @@ const TrainingContainer = () => {
         </div>
 
         <div className="flex-row">
-          <TrainingCardView title="학습 모델 목록" btnList={btnList2} />
+          <TrainingCardView
+            title="학습 모델 목록"
+            btnList={btnList2}
+            tableData={FAKE_JSON_DATA}
+          />
           <TrainingCardInfoView title="모델정보" fileList={fileList} />
         </div>
       </div>
