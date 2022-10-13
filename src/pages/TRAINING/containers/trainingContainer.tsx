@@ -36,6 +36,7 @@ const TrainingContainer = () => {
             title="학습 데이터세트 목록"
             btnList={btnList}
             tableData={FAKE_JSON_DATA}
+            tableId="table_training_dataset"
           />
           <TrainingCardInfoView
             title="데이터세트 상세정보"
@@ -48,6 +49,7 @@ const TrainingContainer = () => {
             title="학습 모델 목록"
             btnList={btnList2}
             tableData={FAKE_JSON_DATA}
+            tableId="table_model_list"
           />
           <TrainingCardInfoView title="모델정보" fileList={fileList} />
         </div>

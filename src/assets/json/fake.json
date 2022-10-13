@@ -6,7 +6,8 @@
     "BuildingId": "8671 Susan Terrace",
     "Floor": "7.5.7",
     "Route_wp": "uk.co.ebay.Konklab",
-    "Date": "2021-07-21"
+    "Date": "2021-07-21",
+    "Checked": false
   },
   {
     "Idx": 2,
@@ -15,7 +16,8 @@
     "BuildingId": "2568 Corben Road",
     "Floor": "7.7",
     "Route_wp": "com.hexun.Otcom",
-    "Date": "2021-10-11"
+    "Date": "2021-10-11",
+    "Checked": false
   },
   {
     "Idx": 3,
@@ -24,7 +26,8 @@
     "BuildingId": "436 Heffernan Avenue",
     "Floor": "4.0",
     "Route_wp": "edu.psu.Namfix",
-    "Date": "2021-11-13"
+    "Date": "2021-11-13",
+    "Checked": false
   },
   {
     "Idx": 4,
@@ -33,7 +36,8 @@
     "BuildingId": "70 Fisk Park",
     "Floor": "9.36",
     "Route_wp": "net.behance.Treeflex",
-    "Date": "2022-04-22"
+    "Date": "2022-04-22",
+    "Checked": false
   },
   {
     "Idx": 5,
@@ -42,7 +46,8 @@
     "BuildingId": "0316 Rockefeller Alley",
     "Floor": "4.1.8",
     "Route_wp": "com.cloudflare.Job",
-    "Date": "2022-08-23"
+    "Date": "2022-08-23",
+    "Checked": false
   },
   {
     "Idx": 6,
@@ -51,7 +56,8 @@
     "BuildingId": "32673 Village Green Center",
     "Floor": "2.53",
     "Route_wp": "com.surveymonkey.Rank",
-    "Date": "2021-10-13"
+    "Date": "2021-10-13",
+    "Checked": false
   },
   {
     "Idx": 7,
@@ -60,7 +66,8 @@
     "BuildingId": "3 Lyons Street",
     "Floor": "0.1.2",
     "Route_wp": "org.dyndns.Pannier",
-    "Date": "2022-06-01"
+    "Date": "2022-06-01",
+    "Checked": false
   },
   {
     "Idx": 8,
@@ -69,7 +76,8 @@
     "BuildingId": "7638 Wayridge Alley",
     "Floor": "2.3",
     "Route_wp": "de.t-online.Subin",
-    "Date": "2021-09-08"
+    "Date": "2021-09-08",
+    "Checked": false
   },
   {
     "Idx": 9,
@@ -78,7 +86,8 @@
     "BuildingId": "71928 Dottie Alley",
     "Floor": "5.4",
     "Route_wp": "com.cbslocal.Voyatouch",
-    "Date": "2022-06-15"
+    "Date": "2022-06-15",
+    "Checked": false
   },
   {
     "Idx": 10,
@@ -87,7 +96,8 @@
     "BuildingId": "5362 Merry Circle",
     "Floor": "6.3.7",
     "Route_wp": "com.yahoo.Lotlux",
-    "Date": "2021-10-18"
+    "Date": "2021-10-18",
+    "Checked": false
   },
   {
     "Idx": 11,
@@ -96,7 +106,8 @@
     "BuildingId": "4 Daystar Drive",
     "Floor": "2.87",
     "Route_wp": "com.baidu.Viva",
-    "Date": "2021-10-28"
+    "Date": "2021-10-28",
+    "Checked": false
   },
   {
     "Idx": 12,
@@ -105,7 +116,8 @@
     "BuildingId": "404 Meadow Vale Parkway",
     "Floor": "7.83",
     "Route_wp": "com.cdbaby.Y-find",
-    "Date": "2022-04-06"
+    "Date": "2022-04-06",
+    "Checked": false
   },
   {
     "Idx": 13,
@@ -114,7 +126,8 @@
     "BuildingId": "4 Crownhardt Parkway",
     "Floor": "0.57",
     "Route_wp": "com.woothemes.Veribet",
-    "Date": "2022-05-21"
+    "Date": "2022-05-21",
+    "Checked": false
   },
   {
     "Idx": 14,
@@ -123,7 +136,8 @@
     "BuildingId": "7 Boyd Drive",
     "Floor": "1.51",
     "Route_wp": "com.techcrunch.Konklab",
-    "Date": "2021-12-05"
+    "Date": "2021-12-05",
+    "Checked": false
   },
   {
     "Idx": 15,
@@ -132,7 +146,8 @@
     "BuildingId": "25 Nelson Lane",
     "Floor": "8.1",
     "Route_wp": "com.forbes.Zathin",
-    "Date": "2022-08-09"
+    "Date": "2022-08-09",
+    "Checked": false
   },
   {
     "Idx": 16,
@@ -141,7 +156,8 @@
     "BuildingId": "61408 Sutherland Terrace",
     "Floor": "0.1.5",
     "Route_wp": "com.xrea.Subin",
-    "Date": "2022-07-25"
+    "Date": "2022-07-25",
+    "Checked": false
   },
   {
     "Idx": 17,
@@ -150,7 +166,8 @@
     "BuildingId": "00 Bartelt Trail",
     "Floor": "3.88",
     "Route_wp": "gov.usgs.Temp",
-    "Date": "2021-07-16"
+    "Date": "2021-07-16",
+    "Checked": false
   },
   {
     "Idx": 18,
@@ -159,7 +176,8 @@
     "BuildingId": "1408 Elmside Street",
     "Floor": "7.1",
     "Route_wp": "be.youtu.Sonair",
-    "Date": "2021-10-22"
+    "Date": "2021-10-22",
+    "Checked": false
   },
   {
     "Idx": 19,
@@ -168,7 +186,8 @@
     "BuildingId": "4724 Haas Point",
     "Floor": "0.4.4",
     "Route_wp": "com.jimdo.Rank",
-    "Date": "2021-11-16"
+    "Date": "2021-11-16",
+    "Checked": false
   },
   {
     "Idx": 20,
@@ -177,7 +196,8 @@
     "BuildingId": "95 Stang Road",
     "Floor": "3.48",
     "Route_wp": "com.springer.Sonair",
-    "Date": "2022-09-23"
+    "Date": "2022-09-23",
+    "Checked": false
   },
   {
     "Idx": 21,
@@ -186,7 +206,8 @@
     "BuildingId": "56 American Avenue",
     "Floor": "4.8.5",
     "Route_wp": "com.blog.Tresom",
-    "Date": "2022-03-08"
+    "Date": "2022-03-08",
+    "Checked": false
   },
   {
     "Idx": 22,
@@ -195,7 +216,8 @@
     "BuildingId": "8 Boyd Lane",
     "Floor": "0.24",
     "Route_wp": "com.symantec.Tin",
-    "Date": "2021-11-04"
+    "Date": "2021-11-04",
+    "Checked": false
   },
   {
     "Idx": 23,
@@ -204,7 +226,8 @@
     "BuildingId": "7 Hazelcrest Hill",
     "Floor": "0.5.4",
     "Route_wp": "com.cocolog-nifty.Zaam-Dox",
-    "Date": "2021-08-16"
+    "Date": "2021-08-16",
+    "Checked": false
   },
   {
     "Idx": 24,
@@ -213,7 +236,8 @@
     "BuildingId": "8 Granby Point",
     "Floor": "0.1.2",
     "Route_wp": "com.cargocollective.Duobam",
-    "Date": "2022-06-25"
+    "Date": "2022-06-25",
+    "Checked": false
   },
   {
     "Idx": 25,
@@ -222,7 +246,8 @@
     "BuildingId": "234 Bartelt Avenue",
     "Floor": "5.2.9",
     "Route_wp": "com.indiegogo.Hatity",
-    "Date": "2021-09-15"
+    "Date": "2021-09-15",
+    "Checked": false
   },
   {
     "Idx": 26,
@@ -231,7 +256,8 @@
     "BuildingId": "305 Cherokee Park",
     "Floor": "5.1",
     "Route_wp": "com.nationalgeographic.Opela",
-    "Date": "2021-12-09"
+    "Date": "2021-12-09",
+    "Checked": false
   },
   {
     "Idx": 27,
@@ -240,7 +266,8 @@
     "BuildingId": "60084 Clove Alley",
     "Floor": "0.7.6",
     "Route_wp": "com.live.Namfix",
-    "Date": "2021-11-28"
+    "Date": "2021-11-28",
+    "Checked": false
   },
   {
     "Idx": 28,
@@ -249,7 +276,8 @@
     "BuildingId": "9302 Bay Court",
     "Floor": "4.3",
     "Route_wp": "jp.co.rakuten.Span",
-    "Date": "2021-11-28"
+    "Date": "2021-11-28",
+    "Checked": false
   },
   {
     "Idx": 29,
@@ -258,7 +286,8 @@
     "BuildingId": "267 Cardinal Road",
     "Floor": "0.2.3",
     "Route_wp": "com.yellowbook.Cardify",
-    "Date": "2021-07-18"
+    "Date": "2021-07-18",
+    "Checked": false
   },
   {
     "Idx": 30,
@@ -267,7 +296,8 @@
     "BuildingId": "4313 Fairfield Road",
     "Floor": "9.7",
     "Route_wp": "com.163.Voltsillam",
-    "Date": "2021-12-23"
+    "Date": "2021-12-23",
+    "Checked": false
   },
   {
     "Idx": 31,
@@ -276,7 +306,8 @@
     "BuildingId": "267 Judy Street",
     "Floor": "0.4.2",
     "Route_wp": "com.google.Cardguard",
-    "Date": "2022-01-18"
+    "Date": "2022-01-18",
+    "Checked": false
   },
   {
     "Idx": 32,
@@ -285,7 +316,8 @@
     "BuildingId": "86523 Dexter Drive",
     "Floor": "8.5.0",
     "Route_wp": "org.creativecommons.Sonsing",
-    "Date": "2021-12-21"
+    "Date": "2021-12-21",
+    "Checked": false
   },
   {
     "Idx": 33,
@@ -294,7 +326,8 @@
     "BuildingId": "991 David Court",
     "Floor": "0.97",
     "Route_wp": "cn.gov.miibeian.Zathin",
-    "Date": "2021-08-01"
+    "Date": "2021-08-01",
+    "Checked": false
   },
   {
     "Idx": 34,
@@ -303,7 +336,8 @@
     "BuildingId": "0 Lake View Trail",
     "Floor": "7.9.0",
     "Route_wp": "com.cdbaby.Lotstring",
-    "Date": "2022-03-30"
+    "Date": "2022-03-30",
+    "Checked": false
   },
   {
     "Idx": 35,
@@ -312,7 +346,8 @@
     "BuildingId": "0763 Memorial Plaza",
     "Floor": "0.5.6",
     "Route_wp": "gov.irs.Hatity",
-    "Date": "2021-12-13"
+    "Date": "2021-12-13",
+    "Checked": false
   },
   {
     "Idx": 36,
@@ -321,7 +356,8 @@
     "BuildingId": "341 Magdeline Circle",
     "Floor": "0.81",
     "Route_wp": "cn.gov.miitbeian.Lotstring",
-    "Date": "2022-02-01"
+    "Date": "2022-02-01",
+    "Checked": false
   },
   {
     "Idx": 37,
@@ -330,7 +366,8 @@
     "BuildingId": "34 Gerald Court",
     "Floor": "3.48",
     "Route_wp": "com.wsj.Zoolab",
-    "Date": "2022-09-23"
+    "Date": "2022-09-23",
+    "Checked": false
   },
   {
     "Idx": 38,
@@ -339,7 +376,8 @@
     "BuildingId": "86983 Knutson Circle",
     "Floor": "7.77",
     "Route_wp": "uk.co.dailymail.Domainer",
-    "Date": "2022-03-25"
+    "Date": "2022-03-25",
+    "Checked": false
   },
   {
     "Idx": 39,
@@ -348,7 +386,8 @@
     "BuildingId": "2187 Arrowood Street",
     "Floor": "6.2.8",
     "Route_wp": "com.cargocollective.Quo Lux",
-    "Date": "2022-01-19"
+    "Date": "2022-01-19",
+    "Checked": false
   },
   {
     "Idx": 40,
@@ -357,7 +396,8 @@
     "BuildingId": "9 Hagan Center",
     "Floor": "0.2.1",
     "Route_wp": "org.joomla.Transcof",
-    "Date": "2022-06-30"
+    "Date": "2022-06-30",
+    "Checked": false
   },
   {
     "Idx": 41,
@@ -366,7 +406,8 @@
     "BuildingId": "833 Independence Parkway",
     "Floor": "3.5.8",
     "Route_wp": "uk.co.bbc.Toughjoyfax",
-    "Date": "2022-05-14"
+    "Date": "2022-05-14",
+    "Checked": false
   },
   {
     "Idx": 42,
@@ -375,7 +416,8 @@
     "BuildingId": "98 Columbus Avenue",
     "Floor": "3.6.1",
     "Route_wp": "com.cyberchimps.Fintone",
-    "Date": "2021-10-09"
+    "Date": "2021-10-09",
+    "Checked": false
   },
   {
     "Idx": 43,
@@ -384,7 +426,8 @@
     "BuildingId": "1207 Ruskin Crossing",
     "Floor": "0.3.0",
     "Route_wp": "com.mediafire.Sonsing",
-    "Date": "2021-12-02"
+    "Date": "2021-12-02",
+    "Checked": false
   },
   {
     "Idx": 44,
@@ -393,7 +436,8 @@
     "BuildingId": "53186 Reinke Drive",
     "Floor": "7.9.8",
     "Route_wp": "com.wufoo.Solarbreeze",
-    "Date": "2022-02-23"
+    "Date": "2022-02-23",
+    "Checked": false
   },
   {
     "Idx": 45,
@@ -402,7 +446,8 @@
     "BuildingId": "130 Stone Corner Point",
     "Floor": "7.1.5",
     "Route_wp": "org.wikipedia.Bigtax",
-    "Date": "2022-04-30"
+    "Date": "2022-04-30",
+    "Checked": false
   },
   {
     "Idx": 46,
@@ -411,7 +456,8 @@
     "BuildingId": "79814 Stone Corner Terrace",
     "Floor": "1.01",
     "Route_wp": "org.prlog.Voyatouch",
-    "Date": "2021-12-15"
+    "Date": "2021-12-15",
+    "Checked": false
   },
   {
     "Idx": 47,
@@ -420,7 +466,8 @@
     "BuildingId": "5 Sage Plaza",
     "Floor": "0.89",
     "Route_wp": "com.chron.Daltfresh",
-    "Date": "2022-06-13"
+    "Date": "2022-06-13",
+    "Checked": false
   },
   {
     "Idx": 48,
@@ -429,7 +476,8 @@
     "BuildingId": "87422 Prairie Rose Place",
     "Floor": "1.90",
     "Route_wp": "com.engadget.Tres-Zap",
-    "Date": "2022-07-26"
+    "Date": "2022-07-26",
+    "Checked": false
   },
   {
     "Idx": 49,
@@ -438,7 +486,8 @@
     "BuildingId": "74177 Havey Avenue",
     "Floor": "9.5",
     "Route_wp": "com.prweb.Bitchip",
-    "Date": "2021-11-21"
+    "Date": "2021-11-21",
+    "Checked": false
   },
   {
     "Idx": 50,
@@ -447,7 +496,8 @@
     "BuildingId": "0246 Sherman Court",
     "Floor": "6.0.8",
     "Route_wp": "com.tmall.Ventosanzap",
-    "Date": "2022-07-29"
+    "Date": "2022-07-29",
+    "Checked": false
   },
   {
     "Idx": 51,
@@ -456,7 +506,8 @@
     "BuildingId": "38103 Sloan Circle",
     "Floor": "0.41",
     "Route_wp": "com.hexun.Mat Lam Tam",
-    "Date": "2022-04-12"
+    "Date": "2022-04-12",
+    "Checked": false
   },
   {
     "Idx": 52,
@@ -465,7 +516,8 @@
     "BuildingId": "39121 Judy Crossing",
     "Floor": "9.44",
     "Route_wp": "org.npr.It",
-    "Date": "2022-01-05"
+    "Date": "2022-01-05",
+    "Checked": false
   },
   {
     "Idx": 53,
@@ -474,7 +526,8 @@
     "BuildingId": "484 Vernon Lane",
     "Floor": "4.1",
     "Route_wp": "com.purevolume.Asoka",
-    "Date": "2021-09-03"
+    "Date": "2021-09-03",
+    "Checked": false
   },
   {
     "Idx": 54,
@@ -483,7 +536,8 @@
     "BuildingId": "161 Manufacturers Point",
     "Floor": "7.2.3",
     "Route_wp": "com.nymag.Zathin",
-    "Date": "2021-10-26"
+    "Date": "2021-10-26",
+    "Checked": false
   },
   {
     "Idx": 55,
@@ -492,7 +546,8 @@
     "BuildingId": "603 Prentice Lane",
     "Floor": "4.1.2",
     "Route_wp": "com.bandcamp.Holdlamis",
-    "Date": "2021-10-13"
+    "Date": "2021-10-13",
+    "Checked": false
   },
   {
     "Idx": 56,
@@ -501,7 +556,8 @@
     "BuildingId": "6504 4th Way",
     "Floor": "1.6",
     "Route_wp": "com.economist.Sonair",
-    "Date": "2021-07-11"
+    "Date": "2021-07-11",
+    "Checked": false
   },
   {
     "Idx": 57,
@@ -510,7 +566,8 @@
     "BuildingId": "2157 Red Cloud Alley",
     "Floor": "1.1.2",
     "Route_wp": "cn.gov.miitbeian.Keylex",
-    "Date": "2022-04-08"
+    "Date": "2022-04-08",
+    "Checked": false
   },
   {
     "Idx": 58,
@@ -519,7 +576,8 @@
     "BuildingId": "8 Doe Crossing Way",
     "Floor": "8.0",
     "Route_wp": "net.php.Fix San",
-    "Date": "2022-05-30"
+    "Date": "2022-05-30",
+    "Checked": false
   },
   {
     "Idx": 59,
@@ -528,7 +586,8 @@
     "BuildingId": "59 Loomis Circle",
     "Floor": "4.0",
     "Route_wp": "br.com.google.Sonair",
-    "Date": "2021-08-23"
+    "Date": "2021-08-23",
+    "Checked": false
   },
   {
     "Idx": 60,
@@ -537,7 +596,8 @@
     "BuildingId": "17200 Hagan Street",
     "Floor": "2.4.0",
     "Route_wp": "com.slate.Rank",
-    "Date": "2022-04-03"
+    "Date": "2022-04-03",
+    "Checked": false
   },
   {
     "Idx": 61,
@@ -546,7 +606,8 @@
     "BuildingId": "33837 Schlimgen Terrace",
     "Floor": "0.82",
     "Route_wp": "edu.nyu.Prodder",
-    "Date": "2021-08-25"
+    "Date": "2021-08-25",
+    "Checked": false
   },
   {
     "Idx": 62,
@@ -555,7 +616,8 @@
     "BuildingId": "87 Sauthoff Road",
     "Floor": "8.6.7",
     "Route_wp": "com.blogs.Andalax",
-    "Date": "2022-04-17"
+    "Date": "2022-04-17",
+    "Checked": false
   },
   {
     "Idx": 63,
@@ -564,7 +626,8 @@
     "BuildingId": "2 Sunfield Hill",
     "Floor": "8.58",
     "Route_wp": "com.ihg.Daltfresh",
-    "Date": "2022-03-10"
+    "Date": "2022-03-10",
+    "Checked": false
   },
   {
     "Idx": 64,
@@ -573,7 +636,8 @@
     "BuildingId": "06564 Commercial Hill",
     "Floor": "0.31",
     "Route_wp": "com.bluehost.Sub-Ex",
-    "Date": "2021-10-24"
+    "Date": "2021-10-24",
+    "Checked": false
   },
   {
     "Idx": 65,
@@ -582,7 +646,8 @@
     "BuildingId": "82553 Schlimgen Plaza",
     "Floor": "0.7.9",
     "Route_wp": "fr.google.Aerified",
-    "Date": "2022-06-07"
+    "Date": "2022-06-07",
+    "Checked": false
   },
   {
     "Idx": 66,
@@ -591,7 +656,8 @@
     "BuildingId": "7771 Continental Avenue",
     "Floor": "9.5",
     "Route_wp": "com.theglobeandmail.Zathin",
-    "Date": "2022-06-12"
+    "Date": "2022-06-12",
+    "Checked": false
   },
   {
     "Idx": 67,
@@ -600,7 +666,8 @@
     "BuildingId": "50886 Pond Street",
     "Floor": "2.2.9",
     "Route_wp": "com.latimes.Tempsoft",
-    "Date": "2021-12-26"
+    "Date": "2021-12-26",
+    "Checked": false
   },
   {
     "Idx": 68,
@@ -609,7 +676,8 @@
     "BuildingId": "73 Magdeline Court",
     "Floor": "0.4.5",
     "Route_wp": "com.patch.Toughjoyfax",
-    "Date": "2021-12-29"
+    "Date": "2021-12-29",
+    "Checked": false
   },
   {
     "Idx": 69,
@@ -618,7 +686,8 @@
     "BuildingId": "375 High Crossing Road",
     "Floor": "8.6.5",
     "Route_wp": "com.ucoz.Tin",
-    "Date": "2021-11-11"
+    "Date": "2021-11-11",
+    "Checked": false
   },
   {
     "Idx": 70,
@@ -627,7 +696,8 @@
     "BuildingId": "0 La Follette Alley",
     "Floor": "9.0",
     "Route_wp": "com.diigo.Y-Solowarm",
-    "Date": "2022-08-09"
+    "Date": "2022-08-09",
+    "Checked": false
   },
   {
     "Idx": 71,
@@ -636,7 +706,8 @@
     "BuildingId": "51 Cherokee Circle",
     "Floor": "1.2",
     "Route_wp": "cn.360.Viva",
-    "Date": "2021-12-23"
+    "Date": "2021-12-23",
+    "Checked": false
   },
   {
     "Idx": 72,
@@ -645,7 +716,8 @@
     "BuildingId": "612 Graceland Way",
     "Floor": "8.29",
     "Route_wp": "com.symantec.Fintone",
-    "Date": "2022-08-15"
+    "Date": "2022-08-15",
+    "Checked": false
   },
   {
     "Idx": 73,
@@ -654,7 +726,8 @@
     "BuildingId": "0 Macpherson Avenue",
     "Floor": "2.2",
     "Route_wp": "com.histats.Bitwolf",
-    "Date": "2022-02-26"
+    "Date": "2022-02-26",
+    "Checked": false
   },
   {
     "Idx": 74,
@@ -663,7 +736,8 @@
     "BuildingId": "7 Rieder Road",
     "Floor": "0.22",
     "Route_wp": "com.weebly.Zamit",
-    "Date": "2021-10-29"
+    "Date": "2021-10-29",
+    "Checked": false
   },
   {
     "Idx": 75,
@@ -672,7 +746,8 @@
     "BuildingId": "29 Lien Avenue",
     "Floor": "3.4",
     "Route_wp": "uk.ac.ox.Bytecard",
-    "Date": "2022-02-20"
+    "Date": "2022-02-20",
+    "Checked": false
   },
   {
     "Idx": 76,
@@ -681,7 +756,8 @@
     "BuildingId": "96 Dunning Trail",
     "Floor": "3.8",
     "Route_wp": "com.com.Fix San",
-    "Date": "2022-03-21"
+    "Date": "2022-03-21",
+    "Checked": false
   },
   {
     "Idx": 77,
@@ -690,7 +766,8 @@
     "BuildingId": "381 Ridgeway Road",
     "Floor": "7.2.1",
     "Route_wp": "com.ehow.Stringtough",
-    "Date": "2022-01-29"
+    "Date": "2022-01-29",
+    "Checked": false
   },
   {
     "Idx": 78,
@@ -699,7 +776,8 @@
     "BuildingId": "25125 Welch Park",
     "Floor": "4.6",
     "Route_wp": "jp.ne.hatena.Andalax",
-    "Date": "2022-05-10"
+    "Date": "2022-05-10",
+    "Checked": false
   },
   {
     "Idx": 79,
@@ -708,7 +786,8 @@
     "BuildingId": "94 Miller Circle",
     "Floor": "0.5.0",
     "Route_wp": "com.slate.Konklux",
-    "Date": "2021-09-20"
+    "Date": "2021-09-20",
+    "Checked": false
   },
   {
     "Idx": 80,
@@ -717,7 +796,8 @@
     "BuildingId": "53 Heath Circle",
     "Floor": "0.21",
     "Route_wp": "jp.geocities.Tin",
-    "Date": "2021-12-12"
+    "Date": "2021-12-12",
+    "Checked": false
   },
   {
     "Idx": 81,
@@ -726,7 +806,8 @@
     "BuildingId": "49 Sachs Terrace",
     "Floor": "5.16",
     "Route_wp": "org.simplemachines.Rank",
-    "Date": "2022-02-18"
+    "Date": "2022-02-18",
+    "Checked": false
   },
   {
     "Idx": 82,
@@ -735,7 +816,8 @@
     "BuildingId": "09 Lindbergh Avenue",
     "Floor": "7.49",
     "Route_wp": "edu.uiuc.Treeflex",
-    "Date": "2021-08-30"
+    "Date": "2021-08-30",
+    "Checked": false
   },
   {
     "Idx": 83,
@@ -744,7 +826,8 @@
     "BuildingId": "9811 Oakridge Terrace",
     "Floor": "2.5.2",
     "Route_wp": "com.printfriendly.Daltfresh",
-    "Date": "2021-11-26"
+    "Date": "2021-11-26",
+    "Checked": false
   },
   {
     "Idx": 84,
@@ -753,7 +836,8 @@
     "BuildingId": "196 Ridgeway Way",
     "Floor": "0.22",
     "Route_wp": "org.wikimedia.Quo Lux",
-    "Date": "2022-08-22"
+    "Date": "2022-08-22",
+    "Checked": false
   },
   {
     "Idx": 85,
@@ -762,7 +846,8 @@
     "BuildingId": "76 Morningstar Plaza",
     "Floor": "0.13",
     "Route_wp": "uk.co.guardian.Cardguard",
-    "Date": "2021-09-16"
+    "Date": "2021-09-16",
+    "Checked": false
   },
   {
     "Idx": 86,
@@ -771,7 +856,8 @@
     "BuildingId": "2637 Eastwood Street",
     "Floor": "2.9.9",
     "Route_wp": "uk.co.thetimes.Temp",
-    "Date": "2021-07-21"
+    "Date": "2021-07-21",
+    "Checked": false
   },
   {
     "Idx": 87,
@@ -780,7 +866,8 @@
     "BuildingId": "7519 Nevada Court",
     "Floor": "0.80",
     "Route_wp": "de.t-online.Duobam",
-    "Date": "2022-08-01"
+    "Date": "2022-08-01",
+    "Checked": false
   },
   {
     "Idx": 88,
@@ -789,7 +876,8 @@
     "BuildingId": "5 Stone Corner Parkway",
     "Floor": "5.7.6",
     "Route_wp": "com.imgur.Otcom",
-    "Date": "2022-08-23"
+    "Date": "2022-08-23",
+    "Checked": false
   },
   {
     "Idx": 89,
@@ -798,7 +886,8 @@
     "BuildingId": "830 Welch Lane",
     "Floor": "8.4",
     "Route_wp": "ru.mail.Voyatouch",
-    "Date": "2022-04-14"
+    "Date": "2022-04-14",
+    "Checked": false
   },
   {
     "Idx": 90,
@@ -807,7 +896,8 @@
     "BuildingId": "14363 Bellgrove Crossing",
     "Floor": "0.1.7",
     "Route_wp": "uk.co.dailymail.Aerified",
-    "Date": "2021-08-27"
+    "Date": "2021-08-27",
+    "Checked": false
   },
   {
     "Idx": 91,
@@ -816,7 +906,8 @@
     "BuildingId": "00 Maryland Lane",
     "Floor": "0.1.3",
     "Route_wp": "io.pen.Mat Lam Tam",
-    "Date": "2021-10-16"
+    "Date": "2021-10-16",
+    "Checked": false
   },
   {
     "Idx": 92,
@@ -825,7 +916,8 @@
     "BuildingId": "9 Nobel Court",
     "Floor": "0.67",
     "Route_wp": "com.topsy.Aerified",
-    "Date": "2022-04-11"
+    "Date": "2022-04-11",
+    "Checked": false
   },
   {
     "Idx": 93,
@@ -834,7 +926,8 @@
     "BuildingId": "9 Transport Trail",
     "Floor": "8.26",
     "Route_wp": "com.mozilla.Sub-Ex",
-    "Date": "2022-01-05"
+    "Date": "2022-01-05",
+    "Checked": false
   },
   {
     "Idx": 94,
@@ -843,7 +936,8 @@
     "BuildingId": "7 Nova Circle",
     "Floor": "7.30",
     "Route_wp": "com.jiathis.Mat Lam Tam",
-    "Date": "2022-09-26"
+    "Date": "2022-09-26",
+    "Checked": false
   },
   {
     "Idx": 95,
@@ -852,7 +946,8 @@
     "BuildingId": "85 Bartillon Pass",
     "Floor": "2.8.5",
     "Route_wp": "com.dedecms.Stim",
-    "Date": "2022-02-26"
+    "Date": "2022-02-26",
+    "Checked": false
   },
   {
     "Idx": 96,
@@ -861,7 +956,8 @@
     "BuildingId": "25614 Starling Road",
     "Floor": "7.3",
     "Route_wp": "com.storify.Vagram",
-    "Date": "2021-08-18"
+    "Date": "2021-08-18",
+    "Checked": false
   },
   {
     "Idx": 97,
@@ -870,7 +966,8 @@
     "BuildingId": "15 Oxford Court",
     "Floor": "4.82",
     "Route_wp": "com.sciencedaily.Lotlux",
-    "Date": "2022-02-26"
+    "Date": "2022-02-26",
+    "Checked": false
   },
   {
     "Idx": 98,
@@ -879,7 +976,8 @@
     "BuildingId": "2 Canary Lane",
     "Floor": "0.59",
     "Route_wp": "com.nbcnews.Cardify",
-    "Date": "2022-04-30"
+    "Date": "2022-04-30",
+    "Checked": false
   },
   {
     "Idx": 99,
@@ -888,7 +986,8 @@
     "BuildingId": "7093 Messerschmidt Park",
     "Floor": "5.31",
     "Route_wp": "co.t.Opela",
-    "Date": "2022-09-09"
+    "Date": "2022-09-09",
+    "Checked": false
   },
   {
     "Idx": 100,
@@ -897,6 +996,7 @@
     "BuildingId": "57662 Vernon Road",
     "Floor": "8.84",
     "Route_wp": "com.ft.Holdlamis",
-    "Date": "2022-09-06"
+    "Date": "2022-09-06",
+    "Checked": false
   }
 ]

@@ -1,10 +1,13 @@
 import Table from "@/components/table";
 import { getKeysInObject } from "@/utils/common/commonUtils";
+
 import React from "react";
 type CardViewProps = {
   btnList: string[];
   title: string;
   tableData: Array<TableDataInterface>;
+  tableId?: string;
+  checkedIdx?: Array<number>;
 };
 
 interface TableDataInterface {
@@ -15,15 +18,22 @@ interface TableDataInterface {
   Floor: string;
   Route_wp: string;
   Date: string;
+  Checked: boolean;
 }
 
-const TrainingCardView = ({ title, btnList, tableData }: CardViewProps) => {
+const TrainingCardView = ({
+  title,
+  btnList,
+  tableData,
+  tableId,
+  checkedIdx,
+}: CardViewProps) => {
   return (
     <div className="card flex8">
       {/* 제목 */}
       <p className="card__title">{title}</p>
       {/* 테이블 */}
-      <Table tableData={tableData} />
+      <Table tableData={tableData} tableId={tableId} />
       {/* 버튼 */}
       <div className="card__table__btn-container">
         {btnList.map((list) => {

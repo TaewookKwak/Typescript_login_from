@@ -58,6 +58,13 @@ body {
   position: sticky;
   top: 0;
 }
+
+.flex-row-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 /*  */
 
 .main_dashboard {
@@ -372,6 +379,15 @@ option {
 .card__table__btn:hover {
   background-color: var(--theme-btn-color2);
   color: white;
+}
+
+.card__table__checkbox {
+  width: 2em;
+  height: 1.5em;
+}
+
+.card__table .align-center {
+  text-align: center;
 }
 
 .card__dataset {
