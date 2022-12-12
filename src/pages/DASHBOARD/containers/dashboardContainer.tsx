@@ -4,12 +4,20 @@ const DashboardContainer = () => {
   return (
     <main className="main_dashboard">
       <div className="dashboard">
-        <p className="title">
+        {/* <p className="title">
           측위자원
           <br />
           수집/학습 관리
           <br />
           프로그램
+        </p> */}
+
+        <p className="title">
+          행동인식
+          <br />
+          데이터 수집 및
+          <br />
+          모델 생성
         </p>
 
         <ul className="subtitle">

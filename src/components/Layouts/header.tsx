@@ -20,7 +20,8 @@ const Header = () => {
     <header ref={header}>
       <div className="header_title">
         <img className="icon" src={ICON} alt="" />
-        <h1>측위알고리즘 시험 검증 시스템</h1>
+        {/* <h1>측위알고리즘 시험 검증 시스템</h1> */}
+        <h1>행동인식 데이터 수집 및 모델 생성 </h1>
       </div>
 
       <nav>

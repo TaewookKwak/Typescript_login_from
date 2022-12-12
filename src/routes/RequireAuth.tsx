@@ -13,13 +13,16 @@ type RequireAuthProps = {
   auth?: any;
 };
 
-const RequireAuth = (auth: any) => {
-  const location = useLocation();
-  return !isEmpty(auth) ? (
-    <Outlet />
-  ) : (
-    <Navigate to="/login" state={{ from: location }} replace />
-  );
+const RequireAuth = ({ auth }: RequireAuthProps) => {
+  // const location = useLocation();
+
+  return <Outlet />;
+
+  // return !isEmpty(auth) ? (
+  //   <Outlet />
+  // ) : (
+  //   <Navigate to="/login" state={{ from: location }} replace />
+  // );
 };
 
 export default RequireAuth;
