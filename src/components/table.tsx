@@ -1,9 +1,12 @@
+import { COLOR } from "@/constants/constant";
 import {
+  clickTrChangeColor,
   getKeysInObject,
+  initTrColor,
   sortAscendingBy,
   sortDescendingBy,
 } from "@/utils/common/commonUtils";
-import React, { useEffect } from "react";
+import React, { MutableRefObject, useEffect, useRef } from "react";
 import { useState } from "react";
 interface TableDataInterface {
   [key: string]: any;
@@ -13,12 +16,14 @@ type TableDataType = {
   tableData: Array<TableDataInterface>;
   tableId?: string;
   checkedIdx?: Array<number>;
+  rowClickedData?: Array<TableDataInterface>;
 };
 
-const Table = ({ tableData, tableId }: TableDataType) => {
+const Table = ({ tableData, tableId, rowClickedData }: TableDataType) => {
   const [data, setData] = useState<Array<TableDataInterface>>(tableData);
   const [checkedData, setCheckedData] = useState(new Set());
   const tableColumn = getKeysInObject(tableData[0]);
+  const trRef = useRef<any>([]);
 
   const getAllIdxToSet = () => {
     return data.map((list) => list.Idx);
@@ -41,6 +46,7 @@ const Table = ({ tableData, tableId }: TableDataType) => {
       newTableData = data.sort(sortDescendingBy(list));
     }
 
+    initTrColor(trRef);
     setData([...newTableData]);
   };
 
@@ -74,6 +80,11 @@ const Table = ({ tableData, tableId }: TableDataType) => {
     }
   };
 
+  const onClickTR = (e: any, index: number) => {
+    clickTrChangeColor(e, index, trRef);
+    console.log(data[index]);
+  };
+
   return (
     <div className="card__table">
       <table id={tableId}>
@@ -87,7 +98,7 @@ const Table = ({ tableData, tableId }: TableDataType) => {
                   className="card__table__checkbox"
                   onChange={onCheckBoxAll}
                 />
-                <label htmlFor="checkbox-all">전체</label>
+                <label htmlFor="checkbox-all"></label>
               </div>
             </th>
             {tableColumn.map((list) => {
@@ -104,9 +115,15 @@ const Table = ({ tableData, tableId }: TableDataType) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((list) => {
+          {data.map((list, index) => {
             return (
-              <tr>
+              <tr
+                className="card__table__tr clickable"
+                ref={(ref) => {
+                  return (trRef.current[index] = ref);
+                }}
+                onClick={(e) => onClickTR(e, index)}
+              >
                 <td className="align-center">
                   <input
                     onChange={(e) => onCheckBox(e, list.Idx)}

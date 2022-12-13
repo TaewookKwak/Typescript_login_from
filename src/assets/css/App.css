@@ -1,6 +1,7 @@
 @charset "utf-8";
 @import url("fonts.css");
 @import "reset.css";
+@import "animation.css";
 
 /* custom */
 :root {
@@ -8,10 +9,10 @@
   --theme-color2: #212b36;
   --theme-color3: #333d48;
 
-  --theme-font-color1: white;
-  --theme-font-color2: #1ccaff;
-  --theme-btn-color1: #1ccaff;
-  --theme-btn-color2: #1890ff;
+  --theme-font-color-whites: white;
+  --theme-font-color-primary: #1ccaff;
+  --theme-btn-color-primary: #1ccaff;
+  --theme-btn-color-blue: #1890ff;
   --theme-selet-border-color1: gray;
 
   --font-size-verylarge: 4em;
@@ -28,6 +29,7 @@
   padding: 0;
   font-family: "Pretendard";
 }
+
 body {
   background: #000;
   color: white;
@@ -36,6 +38,7 @@ body {
 *::-webkit-scrollbar {
   width: 16px;
 }
+
 *::-webkit-scrollbar-thumb {
   background-color: gray;
   border-radius: 10px;
@@ -141,11 +144,11 @@ nav .link {
 }
 
 nav .link:hover {
-  color: var(--theme-font-color2);
+  color: var(--theme-font-color-primary);
 }
 
 nav .link.active {
-  color: var(--theme-font-color2);
+  color: var(--theme-font-color-primary);
 }
 
 nav li {
@@ -155,7 +158,7 @@ nav li {
 h1 {
   font-size: var(--font-size-large);
   font-weight: 700;
-  color: var(--theme-font-color2);
+  color: var(--theme-font-color-primary);
 }
 
 footer {
@@ -374,7 +377,7 @@ option {
   border: none;
   cursor: pointer;
   border-radius: 10px;
-  background-color: var(--theme-btn-color1);
+  background-color: var(--theme-btn-color-primary);
   transition: all 400ms;
   color: black;
   font-weight: 700;
@@ -382,7 +385,7 @@ option {
 }
 
 .card__table__btn:hover {
-  background-color: var(--theme-btn-color2);
+  background-color: var(--theme-btn-color-blue);
   color: white;
 }
 
@@ -398,7 +401,7 @@ option {
 .card__dataset {
   flex: 5;
   line-height: 2;
-  color: var(--theme-btn-color1);
+  color: var(--theme-btn-color-primary);
   overflow-y: auto;
 }
 
@@ -468,7 +471,7 @@ option {
 }
 
 #switch:checked + label {
-  background: var(--theme-btn-color1);
+  background: var(--theme-btn-color-primary);
   position: relative;
 }
 

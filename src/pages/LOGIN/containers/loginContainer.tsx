@@ -29,7 +29,7 @@ const LoginContainer = () => {
 
     setItem("auth", payload);
 
-    navigate("/Dashboard", { replace: true });
+    navigate("/Home", { replace: true });
     // login(payload);
   };
   return (

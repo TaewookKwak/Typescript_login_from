@@ -4,8 +4,11 @@ import MyLayout from "@/routes/MyLayout";
 import RequireAuth from "@/routes/RequireAuth";
 
 // lazy 추가 221005
+const DatasetManagement = React.lazy(
+  () => import("@pages/DATASETMANAGEMENT/datasetManagement")
+);
 const Login = React.lazy(() => import("@/pages/LOGIN/login"));
-const Dashboard = React.lazy(() => import("@/pages/DASHBOARD/dashboard"));
+const Home = React.lazy(() => import("@pages/DASHBOARD/home"));
 const Tranining = React.lazy(() => import("@/pages/TRAINING/tranining"));
 const Monitoring = React.lazy(() => import("@/pages/MONITORING/monitoring"));
 const Management = React.lazy(() => import("@/pages/MANAGEMENT/management"));
@@ -16,11 +19,15 @@ const MyRoutes = () => {
     <Routes>
       <Route path="/" element={<MyLayout />}>
         <Route element={<RequireAuth />}>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<Home />} />
         </Route>
 
         <Route element={<RequireAuth />}>
-          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/Home" element={<Home />} />
+        </Route>
+
+        <Route element={<RequireAuth />}>
+          <Route path="/Dataset/Management" element={<DatasetManagement />} />
         </Route>
 
         <Route element={<RequireAuth />}>

@@ -11,7 +11,7 @@ const MyLayout = () => {
     <>
       <Header />
       <Outlet />
-      {pathname === "/Dashboard" && <Footer />}
+      {pathname === "/Home" && <Footer />}
     </>
   );
 };

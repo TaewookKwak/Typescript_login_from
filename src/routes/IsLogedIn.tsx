@@ -13,7 +13,7 @@ const IsLoggedIn = ({ auth, location }: IsLoggedInProps) => {
   return (
     <>
       {!isEmpty(auth) ? (
-        <Navigate to="/Dashboard" state={{ from: next }} replace />
+        <Navigate to="/Home" state={{ from: next }} replace />
       ) : (
         <Outlet />
       )}

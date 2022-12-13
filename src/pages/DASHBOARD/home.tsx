@@ -1,7 +1,7 @@
 import React from "react";
 import DashboardContainer from "@/pages/DASHBOARD/containers/dashboardContainer";
 
-const Dashboard = () => {
+const Home = () => {
   let arr: string[] = ["kim", "park"];
   let obj: { name: string; age?: number } = { name: "kim" };
   let differentType: string | number = 1;
@@ -22,4 +22,4 @@ const Dashboard = () => {
   return <DashboardContainer />;
 };
 
-export default Dashboard;
+export default Home;

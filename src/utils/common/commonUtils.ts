@@ -1,3 +1,4 @@
+import { COLOR } from "./../../constants/constant";
 /**
  * 빈 객체 여부 체크
  * @author 곽태욱
@@ -44,4 +45,21 @@ export const sortDescendingBy = (filed: string) => {
     }
     return 0;
   };
+};
+
+export const clickTrChangeColor = (e: any, index: number, ref: any) => {
+  const currentRef = ref.current[index];
+  const allRef = ref.current;
+  allRef.forEach((element: HTMLTableElement) => {
+    element.style.backgroundColor = "transparent";
+  });
+
+  currentRef.style.backgroundColor = COLOR.GREEN_PR;
+};
+
+export const initTrColor = (ref: any) => {
+  const allRef = ref.current;
+  allRef.forEach((element: HTMLTableElement) => {
+    element.style.backgroundColor = "transparent";
+  });
 };

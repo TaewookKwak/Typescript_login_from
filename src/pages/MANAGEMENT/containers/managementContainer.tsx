@@ -17,11 +17,13 @@ const ManagementContainer = () => {
         title="측위자원 수집 데이터세트"
         btnList={btnList}
         tableData={FAKE_JSON_DATA}
+        idx={1}
       />
       <ManagementCardView
         title="후처리된 데이터세트"
         btnList={btnList2}
         tableData={FAKE_JSON_DATA}
+        idx={2}
       />
     </main>
   );

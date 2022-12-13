@@ -5,6 +5,7 @@ type CardViewProps = {
   btnList: string[];
   title: string;
   tableData: Array<TableDataInterface>;
+  idx?: number;
 };
 
 interface TableDataInterface {
@@ -21,9 +22,10 @@ const ManagementCardView = ({
   title,
   btnList,
   tableData,
+  idx,
 }: CardViewProps): JSX.Element => {
   return (
-    <div className="card">
+    <div className={`card ani${idx}`}>
       <p className="card__title">{title}</p>
       <Table tableData={tableData} />
       <div className="card__table__btn-container">

@@ -27,10 +27,17 @@ const Header = () => {
       <nav>
         <NavLink
           onClick={(e) => onSelectMenu(e)}
-          to={"/Dashboard"}
+          to={"/Home"}
           className={({ isActive }) => (isActive ? "link active" : "link")}
         >
           Home
+        </NavLink>
+        <NavLink
+          onClick={(e) => onSelectMenu(e)}
+          to={"/Dataset/Management"}
+          className={({ isActive }) => (isActive ? "link active" : "link")}
+        >
+          데이터세트관리
         </NavLink>
         <NavLink
           onClick={(e) => onSelectMenu(e)}
