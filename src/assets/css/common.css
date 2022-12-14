@@ -1,0 +1,10 @@
+.mainContainer {
+  padding: 1.5em;
+}
+
+.basicContainer {
+  background: #232228;
+  border-radius: 1em;
+  padding: 2em;
+  width: 100%;
+}

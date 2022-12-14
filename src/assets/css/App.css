@@ -2,6 +2,8 @@
 @import url("fonts.css");
 @import "reset.css";
 @import "animation.css";
+@import "agTable.css";
+@import "common.css";
 
 /* custom */
 :root {
@@ -10,8 +12,8 @@
   --theme-color3: #333d48;
 
   --theme-font-color-whites: white;
-  --theme-font-color-primary: #1ccaff;
-  --theme-btn-color-primary: #1ccaff;
+  --theme-font-color-primary: #20bfa9;
+  --theme-btn-color-primary: #20bfa9;
   --theme-btn-color-blue: #1890ff;
   --theme-selet-border-color1: gray;
 
@@ -158,7 +160,7 @@ nav li {
 h1 {
   font-size: var(--font-size-large);
   font-weight: 700;
-  color: var(--theme-font-color-primary);
+  color: lightgray;
 }
 
 footer {

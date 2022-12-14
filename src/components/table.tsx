@@ -29,6 +29,7 @@ const Table = ({ tableData, tableId, rowClickedData }: TableDataType) => {
     return data.map((list) => list.Idx);
   };
 
+  // Sort 기능
   const onSort = (
     list: string,
     event: React.MouseEvent<HTMLTableHeaderCellElement, MouseEvent>
@@ -50,6 +51,7 @@ const Table = ({ tableData, tableId, rowClickedData }: TableDataType) => {
     setData([...newTableData]);
   };
 
+  // 전체선택
   const onCheckBoxAll = (e: React.ChangeEvent<HTMLInputElement>) => {
     const target = e.target;
     const checked = target.checked;
@@ -67,6 +69,7 @@ const Table = ({ tableData, tableId, rowClickedData }: TableDataType) => {
     setCheckedData(new Set(checkedData));
   };
 
+  // 개별선택
   const onCheckBox = (e: React.ChangeEvent<HTMLInputElement>, _idx: number) => {
     const target = e.target;
 
@@ -80,9 +83,12 @@ const Table = ({ tableData, tableId, rowClickedData }: TableDataType) => {
     }
   };
 
+  // table row 클릭
   const onClickTR = (e: any, index: number) => {
-    clickTrChangeColor(e, index, trRef);
-    console.log(data[index]);
+    // 클릭 하는 요소가 checkbox 일때는 무시
+    if (e.target.type !== "checkbox") {
+      clickTrChangeColor(e, index, trRef);
+    }
   };
 
   return (

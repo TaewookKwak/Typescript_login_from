@@ -47,6 +47,13 @@ export const sortDescendingBy = (filed: string) => {
   };
 };
 
+/**
+ * tr 클릭 시 색 변경
+ * @param e
+ * @param index
+ * @param ref
+ * @author 곽태욱
+ */
 export const clickTrChangeColor = (e: any, index: number, ref: any) => {
   const currentRef = ref.current[index];
   const allRef = ref.current;

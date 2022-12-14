@@ -1,0 +1,55 @@
+.ag-cell-value {
+  color: lightgray;
+}
+
+.ag-header-viewport,
+.ag-header-row.ag-header-row-column,
+.ag-header-row,
+.ag-header-cell {
+  background-color: transparent !important;
+}
+
+.ag-theme-alpine-dark {
+  --ag-background-color: transparent !important;
+  --ag-border-color: transparent !important;
+  --ag-header-background-color: transparent !important;
+  --ag-odd-row-background-color: transparent !important;
+  --ag-selected-row-background-color: rgb(0, 255, 0, 0.1) !important;
+  --ag-range-selection-background-color: rgb(255, 0, 128, 0.1);
+  --ag-range-selection-border-color: transparent !important;
+  --ag-row-hover-color: rgba(142, 244, 142, 0.04) !important;
+  --ag-checkbox-checked-color: rgba(135, 239, 135, 0.433) !important;
+}
+.ag-ltr .ag-cell,
+.ag-header-cell,
+.ag-header-group-cell {
+  /* padding: 0px !important; */
+}
+
+.ag-btn-container {
+  position: absolute;
+  bottom: 0;
+  height: calc(6px * 8);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-left: 1em;
+}
+
+.ag-btn-container > button {
+  padding: 0.5em 1em;
+  margin-right: 1em;
+  border: none;
+  border-radius: 6px;
+}
+
+.ag-btn-container > button:hover {
+  transition: all 300ms ease;
+  background-color: #20bfa9;
+}
+
+.ag-center-cols-container {
+  cursor: pointer !important;
+}
