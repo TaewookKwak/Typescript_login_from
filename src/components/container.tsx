@@ -5,11 +5,18 @@ type Props = {
   children?: React.ReactNode;
   idx?: number;
   title?: string;
+  cls?: string;
+  addedCls?: string;
 };
 
-const Container: React.FC<Props> = ({ children, title }) => {
+const Container: React.FC<Props> = ({
+  children,
+  title,
+  cls = "basicContainer",
+  addedCls,
+}) => {
   return (
-    <section className="basicContainer">
+    <section className={`${cls} ${addedCls}`}>
       {title ? (
         <h3
           style={{

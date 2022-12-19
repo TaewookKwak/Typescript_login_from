@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import MyLayout from "@/routes/MyLayout";
 import RequireAuth from "@/routes/RequireAuth";
 
@@ -19,7 +19,7 @@ const MyRoutes = () => {
     <Routes>
       <Route path="/" element={<MyLayout />}>
         <Route element={<RequireAuth />}>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Navigate to="/home" replace />} />
         </Route>
 
         <Route element={<RequireAuth />}>
