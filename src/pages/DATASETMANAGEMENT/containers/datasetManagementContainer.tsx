@@ -2,7 +2,7 @@ import { MyButton } from "@/components/MyButton";
 import { AgGrid } from "@/components/agGrid";
 import Container from "@/components/container";
 import { isEmpty } from "@/utils/common/commonUtils";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 
 export interface DatasetRowData {
@@ -95,13 +95,22 @@ const column3 = [
 ];
 
 const DatasetManagementContainer = () => {
+  // 데이터세트 목록
   const [datasetRowData, setDatasetRowData] = useState<DatasetRowData[]>([]);
+  // 데이터세트 상세 정보
   const [datasetDetails, setDatasetDetails] = useState<detailProp>({});
+  // 데이터세트 목록2
   const [processedRowData, setProcessedRowData] = useState<ProcessedRowData[]>(
     []
   );
+
   const [processedDetails, setProcessedDetails] = useState<detailProp>({});
+  // 액터 목록
   const [actorRowData, setActorRowData] = useState<ActorRowData[]>([]);
+  // ag-grid 테이블 API 목록
+  const [gridApi, setGridApi] = useState<{ [key: string]: any }>({});
+  const [gridApi2, setGridApi2] = useState<{ [key: string]: any }>({});
+  const [gridApi3, setGridApi3] = useState<{ [key: string]: any }>({});
 
   const onClickRow: onClickRow = (e: any, idx: string) => {
     const rowData = e.data;
@@ -110,6 +119,10 @@ const DatasetManagementContainer = () => {
     } else if (idx === "2") {
       setProcessedDetails({ ...rowData });
     }
+  };
+
+  const onClickBtn = (e: React.MouseEvent<HTMLElement>) => {
+    console.log(gridApi.getSelectedRows());
   };
 
   useEffect(() => {
@@ -134,6 +147,8 @@ const DatasetManagementContainer = () => {
          */}
         <Container title="데이터세트 목록" addedCls="flex7">
           <AgGrid
+            setGridApi={setGridApi}
+            gridApi={gridApi}
             onClickRow={onClickRow}
             data={datasetRowData}
             setData={setDatasetRowData}
@@ -141,7 +156,7 @@ const DatasetManagementContainer = () => {
             idx="1"
           />
           <div className="ag-btn-container">
-            <MyButton title="Action" />
+            <MyButton title="Action" onClickBtn={onClickBtn} />
           </div>
         </Container>
         {!isEmpty(datasetDetails) && (
@@ -191,6 +206,8 @@ const DatasetManagementContainer = () => {
       <div className="containers">
         <Container title="데이터세트 목록(전처리 후)" addedCls="flex7">
           <AgGrid
+            setGridApi={setGridApi2}
+            gridApi={gridApi2}
             onClickRow={onClickRow}
             data={processedRowData}
             setData={setProcessedRowData}
@@ -205,6 +222,8 @@ const DatasetManagementContainer = () => {
             cls="basicContainer2nd"
           >
             <AgGrid
+              setGridApi={setGridApi3}
+              gridApi={gridApi3}
               onClickRow={onClickRow}
               data={actorRowData}
               setData={setActorRowData}

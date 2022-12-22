@@ -14,6 +14,8 @@ import "ag-grid-community/styles/ag-theme-balham.css"; // Optional theme CSS
 import "ag-grid-community/styles/ag-theme-material.css"; // Optional theme CSS
 
 interface AgGridProps {
+  setGridApi: any;
+  gridApi: { [key: string]: any };
   onClickRow: (e: any, idx: string) => void;
   data: any;
   setData?: any;
@@ -22,18 +24,16 @@ interface AgGridProps {
 }
 
 export const AgGrid: React.FC<AgGridProps> = ({
+  setGridApi,
+  gridApi,
   onClickRow,
   data,
   column,
   idx = "0",
 }) => {
-  const gridRef = useRef<any>(); // Optional - for accessing Grid's API
-  const [gridApi, setGridApi] = useState<any>(null);
+  const gridRef = useRef<any>();
+
   const [gridColumnApi, setGridColumnApi] = useState(null);
-
-  // Each Column Definition results in one Column.
-
-  // DefaultColDef sets props common to all Columns
   const defaultColDef = useMemo(
     () => ({
       sortable: true,
@@ -44,18 +44,11 @@ export const AgGrid: React.FC<AgGridProps> = ({
     []
   );
 
-  // Example of consuming Grid Event
-  const cellClickedListener = useCallback((event) => {
-    console.log("cellClicked", event);
-    // console.log(gridRef.current.api);
-  }, []);
-
   //  When the grid is initialised, it will call gridReady
   const onGridReady = (params: any) => {
     setGridApi(params.api);
     setGridColumnApi(params.columnApi);
     const updateData = (data: any) => params.api.setRowData(data);
-    console.log(params);
   };
 
   // checkbox 선택 시

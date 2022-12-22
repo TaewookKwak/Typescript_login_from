@@ -19,7 +19,10 @@ const Container: React.FC<Props> = ({
   return (
     <motion.section className={`${cls} ${addedCls}`}>
       {title ? (
-        <h3
+        <motion.h3
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.5 }}
           style={{
             fontSize: FONTSIZE.L,
             marginBottom: "1em",
@@ -27,7 +30,7 @@ const Container: React.FC<Props> = ({
           }}
         >
           {title}
-        </h3>
+        </motion.h3>
       ) : (
         <></>
       )}
