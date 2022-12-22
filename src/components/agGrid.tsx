@@ -4,6 +4,8 @@ import React, {
   useMemo,
   useCallback,
   useEffect,
+  Dispatch,
+  SetStateAction,
 } from "react";
 import { AgGridReact, AgGridColumn } from "ag-grid-react"; // the AG Grid React Component
 import "ag-grid-community/styles/ag-grid.css"; // Core grid CSS, always needed
@@ -11,24 +13,25 @@ import "ag-grid-community/styles/ag-theme-alpine.css"; // Optional theme CSS
 import "ag-grid-community/styles/ag-theme-balham.css"; // Optional theme CSS
 import "ag-grid-community/styles/ag-theme-material.css"; // Optional theme CSS
 
-export const AgGrid = () => {
+interface AgGridProps {
+  onClickRow: (e: any, idx: string) => void;
+  data: any;
+  setData?: any;
+  column: { [index: string]: any }[];
+  idx?: string;
+}
+
+export const AgGrid: React.FC<AgGridProps> = ({
+  onClickRow,
+  data,
+  column,
+  idx = "0",
+}) => {
   const gridRef = useRef<any>(); // Optional - for accessing Grid's API
   const [gridApi, setGridApi] = useState<any>(null);
   const [gridColumnApi, setGridColumnApi] = useState(null);
-  const [rowData, setRowData] = useState(); // Set rowData to Array of Objects, one Object per Row
 
   // Each Column Definition results in one Column.
-  const [columnDefs, setColumnDefs] = useState([
-    {
-      field: "make",
-      filter: true,
-      headerCheckboxSelection: true, // 헤더에도 checkbox 추가
-      checkboxSelection: true, // check box 추가
-      cellStyle: { fontFamily: "Pretendard" },
-    },
-    { field: "model", filter: true, cellStyle: { fontFamily: "Pretendard" } },
-    { field: "price", cellStyle: { fontFamily: "Pretendard" } },
-  ]);
 
   // DefaultColDef sets props common to all Columns
   const defaultColDef = useMemo(
@@ -43,8 +46,8 @@ export const AgGrid = () => {
 
   // Example of consuming Grid Event
   const cellClickedListener = useCallback((event) => {
-    // console.log("cellClicked", event);
-    console.log(gridRef.current.api);
+    console.log("cellClicked", event);
+    // console.log(gridRef.current.api);
   }, []);
 
   //  When the grid is initialised, it will call gridReady
@@ -61,13 +64,6 @@ export const AgGrid = () => {
     console.log("Selection Changed", selectedData);
   };
 
-  // Example load data from sever
-  useEffect(() => {
-    fetch("https://www.ag-grid.com/example-assets/row-data.json")
-      .then((result) => result.json())
-      .then((rowData) => setRowData(rowData));
-  }, []);
-
   return (
     <div
       className="ag-theme-alpine-dark" // pick theme
@@ -75,15 +71,14 @@ export const AgGrid = () => {
     >
       <AgGridReact
         ref={gridRef} // Ref for accessing Grid's API
-        rowData={rowData} // Row Data for Rows
-        columnDefs={columnDefs} // Column Defs for Columns
+        rowData={data} // Row Data for Rows
+        columnDefs={column} // Column Defs for Columns
         defaultColDef={defaultColDef} // Default Column Properties
         animateRows={true} // Optional - set to 'true' to have rows animate when sorted
         rowSelection="multiple" // Options - allows click selection of rows
-        onCellClicked={cellClickedListener} // Optional - registering for Grid Event
+        onCellClicked={(e) => onClickRow(e, idx)} // Optional - registering for Grid Event
         sideBar={{
           toolPanels: ["columns", "filters"],
-          defaultToolPanel: "",
         }}
         onGridReady={onGridReady}
         // enableRangeSelection={true}
@@ -93,9 +88,6 @@ export const AgGrid = () => {
         groupSelectsChildren={true}
         onSelectionChanged={onSelectionChanged}
       ></AgGridReact>
-      <div className="ag-btn-container">
-        <button>전처리전처리하기</button>
-      </div>
     </div>
   );
 };

@@ -7,11 +7,13 @@
 .containers {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 1em;
 }
 
 /* Container */
 .basicContainer2nd,
 .basicContainer {
+  position: relative;
   background: #232228;
   border-radius: 1em;
   padding: 2em;
@@ -30,14 +32,34 @@
   align-items: center;
   width: 100%;
   margin-bottom: 1em;
+  /* white-space: nowrap; */
 }
 
 .detailContent span:first-child {
+  color: darkgray !important;
   margin-right: 2em;
 }
 
 .detailContent span:nth-child(2) {
-  color: darkgray !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 버튼 타입1 */
+.button-type1 {
+  background-color: #9898a0;
+  font-size: 1em;
+  font-weight: 600;
+  color: white;
+  padding: 0.7em 1em;
+  margin-right: 1em;
+  border: none;
+  border-radius: 10px;
+}
+
+.button-type1:hover {
+  transition: all 300ms ease;
+  background-color: #20bfa9;
 }
 
 /* flex */
@@ -64,6 +86,7 @@
 @media (max-width: 1010px) {
   .containers {
     display: block;
+    margin-bottom: 0em;
   }
 
   .basicContainer,
@@ -71,5 +94,9 @@
     width: 100%;
     margin-left: 0em;
     margin-bottom: 1em;
+  }
+
+  .detailContent {
+    white-space: nowrap;
   }
 }

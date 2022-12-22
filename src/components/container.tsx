@@ -1,5 +1,6 @@
 import { FONTSIZE, FONTWEIGHT } from "@/constants/constant";
 import React from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 type Props = {
   children?: React.ReactNode;
@@ -16,7 +17,7 @@ const Container: React.FC<Props> = ({
   addedCls,
 }) => {
   return (
-    <section className={`${cls} ${addedCls}`}>
+    <motion.section className={`${cls} ${addedCls}`}>
       {title ? (
         <h3
           style={{
@@ -31,7 +32,7 @@ const Container: React.FC<Props> = ({
         <></>
       )}
       {children}
-    </section>
+    </motion.section>
   );
 };
 

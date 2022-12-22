@@ -214,40 +214,13 @@ main .title {
   opacity: 1;
 }
 
-@keyframes move-left {
-  0% {
-    margin-left: 100px;
-    opacity: 0;
-  }
-  100% {
-    margin-left: 0px;
-    opacity: 1;
-  }
-}
-
 main .subtitle {
   line-height: 3;
   list-style: square !important;
   color: white;
-  animation: move-left2 0.6s ease-in-out;
+  animation: move-left 0.6s ease-in-out;
   /* animation-delay: 0.3s; */
   margin-left: 0px;
-}
-
-@keyframes move-left2 {
-  0% {
-    margin-left: 100px;
-    opacity: 0;
-  }
-  30% {
-    margin-left: 100px;
-
-    opacity: 0;
-  }
-  100% {
-    margin-left: 0px;
-    opacity: 1;
-  }
 }
 
 .multi-box {
