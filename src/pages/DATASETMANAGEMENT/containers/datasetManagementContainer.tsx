@@ -2,7 +2,7 @@ import { MyButton } from "@/components/MyButton";
 import { AgGrid } from "@/components/agGrid";
 import Container from "@/components/container";
 import { isEmpty } from "@/utils/common/commonUtils";
-import { AnimatePresence, motion } from "framer-motion";
+
 import React, { useEffect, useState } from "react";
 
 export interface DatasetRowData {
@@ -140,7 +140,7 @@ const DatasetManagementContainer = () => {
       <div className="containers">
         {/*
         💌
-        Container Component
+        <Container /> 
         title : 제목
         addedCls : class 추가
         cls : 기본 class 이름

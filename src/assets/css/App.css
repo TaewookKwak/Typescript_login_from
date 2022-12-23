@@ -4,6 +4,7 @@
 @import "animation.css";
 @import "agTable.css";
 @import "common.css";
+@import "buttons.css";
 
 /* custom */
 :root {
@@ -480,7 +481,7 @@ option {
   min-height: 100vh;
 }
 
-input {
+.input-type1 {
   width: 15em;
   height: 3em;
   background-color: var(--theme-color2);
@@ -491,7 +492,7 @@ input {
   outline: none;
 }
 
-input:hover {
+.input-type1:hover {
   border: 2px solid white;
 }
 

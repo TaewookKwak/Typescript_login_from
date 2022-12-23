@@ -32,12 +32,20 @@ const Header = () => {
         >
           Home
         </NavLink>
+
         <NavLink
           onClick={(e) => onSelectMenu(e)}
           to={"/Dataset/Management"}
           className={({ isActive }) => (isActive ? "link active" : "link")}
         >
           데이터세트관리
+        </NavLink>
+        <NavLink
+          onClick={(e) => onSelectMenu(e)}
+          to={"/Dataset/FetchData"}
+          className={({ isActive }) => (isActive ? "link active" : "link")}
+        >
+          데이터가져오기
         </NavLink>
         <NavLink
           onClick={(e) => onSelectMenu(e)}

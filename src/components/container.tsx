@@ -17,7 +17,10 @@ const Container: React.FC<Props> = ({
   addedCls,
 }) => {
   return (
-    <motion.section className={`${cls} ${addedCls}`}>
+    <motion.section
+      exit={{ opacity: 0, x: 1000 }}
+      className={`${cls} ${addedCls}`}
+    >
       {title ? (
         <motion.h3
           initial={{ opacity: 0, x: 100 }}

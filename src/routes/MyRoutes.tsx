@@ -9,6 +9,7 @@ const DatasetManagement = React.lazy(
 );
 const Login = React.lazy(() => import("@/pages/LOGIN/login"));
 const Home = React.lazy(() => import("@pages/DASHBOARD/home"));
+const FetchData = React.lazy(() => import("@pages/FETCHDATA/fetchData"));
 const Tranining = React.lazy(() => import("@/pages/TRAINING/tranining"));
 const Monitoring = React.lazy(() => import("@/pages/MONITORING/monitoring"));
 const Management = React.lazy(() => import("@/pages/MANAGEMENT/management"));
@@ -24,6 +25,10 @@ const MyRoutes = () => {
 
         <Route element={<RequireAuth />}>
           <Route path="/Home" element={<Home />} />
+        </Route>
+
+        <Route element={<RequireAuth />}>
+          <Route path="/Dataset/FetchData" element={<FetchData />} />
         </Route>
 
         <Route element={<RequireAuth />}>

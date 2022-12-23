@@ -1,0 +1,16 @@
+/* 버튼 타입1 */
+.button-type1 {
+  background-color: #9898a0;
+  font-size: 1em;
+  font-weight: 600;
+  color: white;
+  padding: 0.7em 1em;
+  margin-right: 1em;
+  border: none;
+  border-radius: 10px;
+}
+
+.button-type1:hover {
+  transition: all 300ms ease;
+  background-color: #20bfa9;
+}

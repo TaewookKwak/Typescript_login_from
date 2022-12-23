@@ -26,6 +26,7 @@ const MonitoringBoxView = ({ setToggleSwitchValue }: ToggleSwitchProps) => {
           style={{ margin: "1em" }}
           type="text"
           placeholder="Deley time (sec)"
+          className="input-type1"
         />
       </div>
     </div>
