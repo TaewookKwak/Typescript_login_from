@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { MyInputType1 } from "@/components/MyInput";
 import { MyUpload } from "@/components/MyUpload";
+import styled from "styled-components";
 const FetchDataContainer = () => {
   const [isShow2ndContainer, setIsShow2ndContainer] = useState(false);
   const [isShow3rdContainer, setIsShow3rdContainer] = useState(false);
@@ -61,7 +62,9 @@ const FetchDataContainer = () => {
   return (
     <main className="mainContainer">
       <motion.div className="containers">
+        {/* 데이터 가져오기 */}
         <Container
+          cls="basicContainerWithBtns"
           title="데이터 가져오기"
           addedCls={
             isShow3rdContainer
@@ -72,19 +75,22 @@ const FetchDataContainer = () => {
           }
         >
           <MyUpload dragover={true} />
-          <MyButton
-            onClickBtn={() => {
-              setIsShow2ndContainer(!isShow2ndContainer);
-            }}
-            title="가져오기"
-          />
-          <MyButton
-            onClickBtn={() => {
-              setIsShow3rdContainer(!isShow3rdContainer);
-            }}
-            title="데이터세트 정보 입력하기"
-          />
+          <StyledBtnContainer>
+            <MyButton
+              onClickBtn={() => {
+                setIsShow2ndContainer(!isShow2ndContainer);
+              }}
+              title="가져오기"
+            />
+            <MyButton
+              onClickBtn={() => {
+                setIsShow3rdContainer(!isShow3rdContainer);
+              }}
+              title="데이터세트 정보 입력하기"
+            />
+          </StyledBtnContainer>
         </Container>
+        {/* 데이터 진행 상태, 데이터 세트 정보 입력 */}
         <AnimatePresence exitBeforeEnter={true}>
           {isShow2ndContainer && (
             <Container
@@ -123,11 +129,13 @@ const FetchDataContainer = () => {
           {isShow3rdContainer && (
             <Container
               title="데이터세트 정보 입력"
-              cls="basicContainer2nd"
+              cls="basicContainer2nd basicContainerWithBtns"
               addedCls="flex3"
             >
               <MyInputType1 payload={payload} setPayload={setPayload} />
-              <MyButton onClickBtn={() => {}} title="저장하기" />
+              <StyledBtnContainer style={{ position: "absolute", bottom: 28 }}>
+                <MyButton onClickBtn={() => {}} title="저장하기" />
+              </StyledBtnContainer>
             </Container>
           )}
         </AnimatePresence>
@@ -135,5 +143,11 @@ const FetchDataContainer = () => {
     </main>
   );
 };
+
+const StyledBtnContainer = styled.div`
+  position: absolute;
+  bottom: 28px;
+  white-space: nowrap;
+`;
 
 export default FetchDataContainer;

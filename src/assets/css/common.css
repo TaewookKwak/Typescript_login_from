@@ -11,6 +11,7 @@
 }
 
 /* Container */
+.basicContainerWithBtns,
 .basicContainer2nd,
 .basicContainer {
   position: relative;
@@ -18,6 +19,11 @@
   border-radius: 1em;
   padding: 2em;
   width: fit-content;
+  overflow: auto;
+}
+
+.basicContainerWithBtns {
+  padding-bottom: 6em;
 }
 
 .basicContainer2nd {
@@ -73,6 +79,7 @@
     margin-bottom: 0em;
   }
 
+  .basicContainerWithBtns,
   .basicContainer,
   .basicContainer2nd {
     width: 100%;

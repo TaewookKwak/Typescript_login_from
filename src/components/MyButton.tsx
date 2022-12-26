@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import styled from "styled-components";
 
 interface ButtonProp {
   title: string;
@@ -8,12 +9,23 @@ interface ButtonProp {
 
 export const MyButton = ({ title, onClickBtn }: ButtonProp) => {
   return (
-    <motion.button
-      whileTap={{ scale: 1.1 }}
-      className="button-type1"
-      onClick={onClickBtn}
-    >
+    <StyledButtonType1 whileTap={{ scale: 1.1 }} onClick={onClickBtn}>
       {title}
-    </motion.button>
+    </StyledButtonType1>
   );
 };
+
+const StyledButtonType1 = styled(motion.button)`
+  background-color: #9898a0;
+  font-size: 1em;
+  font-weight: 600;
+  color: white;
+  padding: 0.7em 1em;
+  margin-right: 1em;
+  border: none;
+  border-radius: 10px;
+  &:hover {
+    transition: all 300ms ease;
+    background-color: #20bfa9;
+  }
+`;
