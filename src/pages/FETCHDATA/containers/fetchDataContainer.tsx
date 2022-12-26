@@ -3,28 +3,56 @@ import Container from "@/components/container";
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { MyInputType1 } from "@/components/MyInput";
+import { MyUpload } from "@/components/MyUpload";
 const FetchDataContainer = () => {
   const [isShow2ndContainer, setIsShow2ndContainer] = useState(false);
   const [isShow3rdContainer, setIsShow3rdContainer] = useState(false);
   const [payload, setPayload] = useState([
     {
-      name: "username",
-      label: "이름",
-      value: "",
-      placeholder: "입력해주세요",
-      isFocus: false,
-      isWrong: "잘못된 이름입니다.",
-    },
-    {
-      name: "age",
-      label: "나이",
+      name: "location",
+      label: "장소",
       value: "",
       placeholder: "입력해주세요",
       isFocus: false,
     },
     {
-      name: "pw",
-      label: "비밀번호",
+      name: "sizeoflocation",
+      label: "장소크기",
+      value: "",
+      placeholder: "입력해주세요",
+      isFocus: false,
+    },
+    {
+      name: "experimentalequip",
+      label: "실험장비",
+      value: "",
+      placeholder: "입력해주세요",
+      isFocus: false,
+    },
+    {
+      name: "experimentalperiod",
+      label: "실험기간",
+      value: "",
+      placeholder: "입력해주세요",
+      isFocus: false,
+    },
+    {
+      name: "experimentalpeoplecount",
+      label: "실험자수",
+      value: "",
+      placeholder: "입력해주세요",
+      isFocus: false,
+    },
+    {
+      name: "RGBscale",
+      label: "RGB 영상규모",
+      value: "",
+      placeholder: "입력해주세요",
+      isFocus: false,
+    },
+    {
+      name: "threeD",
+      label: "3D 스켈레톤",
       value: "",
       placeholder: "입력해주세요",
       isFocus: false,
@@ -43,6 +71,7 @@ const FetchDataContainer = () => {
               : "flex7"
           }
         >
+          <MyUpload dragover={true} />
           <MyButton
             onClickBtn={() => {
               setIsShow2ndContainer(!isShow2ndContainer);

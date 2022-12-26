@@ -1,5 +1,8 @@
 import React, { useRef } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import { faHouseLaptop, faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const ICON = require("@/assets/imgs/icon_machine_learning2.png");
 const Header = () => {
   const header = useRef<HTMLDivElement>(null);

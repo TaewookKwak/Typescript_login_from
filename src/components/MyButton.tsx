@@ -9,7 +9,7 @@ interface ButtonProp {
 export const MyButton = ({ title, onClickBtn }: ButtonProp) => {
   return (
     <motion.button
-      whileTap={{ scale: 1.4 }}
+      whileTap={{ scale: 1.1 }}
       className="button-type1"
       onClick={onClickBtn}
     >

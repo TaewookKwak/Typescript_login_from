@@ -3,8 +3,8 @@
 @import "reset.css";
 @import "animation.css";
 @import "agTable.css";
-@import "common.css";
 @import "buttons.css";
+@import "common.css";
 
 /* custom */
 :root {
@@ -101,6 +101,8 @@ header {
   top: 0;
   left: 0;
 
+  padding: 1em;
+
   height: 5em;
   width: 100%;
   background-color: transparent;
@@ -119,6 +121,9 @@ header {
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 header .icon {
@@ -653,4 +658,8 @@ option {
 
 .social-login__icon:hover {
   transform: scale(1.5);
+}
+
+.dragEnter {
+  opacity: 0.6;
 }

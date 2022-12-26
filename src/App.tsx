@@ -4,20 +4,13 @@ import { getItem, getSessionStorage } from "@services/sessionStorage/session";
 
 import MyRoutes from "@/routes/MyRoutes";
 import { MutatingDots } from "react-loader-spinner";
+import LoadingSpinner from "@/components/loadingSpinner";
 
 function App() {
   const auth = getItem("auth");
 
   return (
-    <Suspense
-      fallback={
-        <MutatingDots
-          wrapperClass="spinner"
-          color="#1ccaff"
-          secondaryColor="#1ccaff"
-        />
-      }
-    >
+    <Suspense fallback={<LoadingSpinner />}>
       {/* Router setting */}
       <MyRoutes />
     </Suspense>

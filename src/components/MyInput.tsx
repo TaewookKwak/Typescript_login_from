@@ -1,3 +1,4 @@
+import { COLOR } from "@/constants/constant";
 import React from "react";
 import styled from "styled-components";
 interface Payload {
@@ -14,6 +15,31 @@ interface MyInputType1 {
   setPayload: (e: any) => void;
 }
 
+export const MyInputType1: React.FC<MyInputType1> = ({
+  payload,
+  setPayload,
+}) => {
+  return (
+    <FlexDiv>
+      {payload.map((list: any) => {
+        return (
+          <InputContainer data={list}>
+            <StyledLabel className="labelInput" htmlFor="input">
+              {list.label}
+            </StyledLabel>
+            <StyledInput
+              name={list.name}
+              data={list}
+              placeholder={list.placeholder}
+            ></StyledInput>
+          </InputContainer>
+        );
+      })}
+    </FlexDiv>
+  );
+};
+
+// styled-compoenent
 const FlexDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -29,6 +55,13 @@ const StyledInput = styled.input<any>`
   font-size: 1em;
   outline: none;
   margin-bottom: 1em;
+  background-color: transparent;
+  color: white;
+`;
+
+const StyledLabel = styled.label<any>`
+  font-size: 1em;
+  font-weight: 600;
 `;
 
 const InputContainer = styled.div<any>`
@@ -36,11 +69,8 @@ const InputContainer = styled.div<any>`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  background-color: transparent;
   width: 100%;
   & > label {
-    font-size: 14px;
-    font-weight: 700;
     color: ${(props: any) => {
       if (props.data.isWrong) {
         return "red";
@@ -51,7 +81,7 @@ const InputContainer = styled.div<any>`
   }
 
   ${StyledInput} {
-    border-bottom: 5px solid
+    border-bottom: 3px solid
       ${(props: any) => {
         if (props.data.isWrong) {
           return "red";
@@ -60,29 +90,7 @@ const InputContainer = styled.div<any>`
         }
       }};
     &:focus {
-      border-bottom: 5px solid lightblue;
+      border-bottom: 3px solid ${COLOR.GREEN_PR};
     }
   }
 `;
-
-export const MyInputType1: React.FC<MyInputType1> = ({
-  payload,
-  setPayload,
-}) => {
-  return (
-    <FlexDiv>
-      {payload.map((list: any) => {
-        return (
-          <InputContainer data={list}>
-            <label htmlFor="input">{list.label}</label>
-            <StyledInput
-              name={list.name}
-              data={list}
-              placeholder={list.placeholder}
-            ></StyledInput>
-          </InputContainer>
-        );
-      })}
-    </FlexDiv>
-  );
-};

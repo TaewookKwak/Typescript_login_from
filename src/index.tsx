@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
+    <div id="portal" />
     <BrowserRouter>
       <Routes>
         <Route path="/*" element={<App />} />
