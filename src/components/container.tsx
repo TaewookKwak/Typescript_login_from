@@ -1,5 +1,5 @@
 import { FONTSIZE, FONTWEIGHT } from "@/constants/constant";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 type Props = {
@@ -16,9 +16,13 @@ const Container: React.FC<Props> = ({
   cls = "basicContainer",
   addedCls,
 }) => {
+  const sectionRef = useRef<HTMLElement>(null);
+
   return (
     <motion.section
+      ref={sectionRef}
       exit={{ opacity: 0, x: 1000 }}
+      layout
       className={`${cls} ${addedCls}`}
     >
       {title ? (

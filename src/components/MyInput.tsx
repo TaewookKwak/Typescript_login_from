@@ -10,15 +10,12 @@ interface Payload {
   isWrong?: string;
 }
 
-interface MyInputType1 {
+interface InputType1 {
   payload: Payload[];
   setPayload: (e: any) => void;
 }
 
-export const MyInputType1: React.FC<MyInputType1> = ({
-  payload,
-  setPayload,
-}) => {
+export const MyInputType1: React.FC<InputType1> = ({ payload, setPayload }) => {
   return (
     <FlexDiv>
       {payload.map((list: any) => {
@@ -51,7 +48,6 @@ const StyledInput = styled.input<any>`
   width: 100%;
   height: 2em;
   border: none;
-  border-bottom: 5px solid grey;
   font-size: 1em;
   outline: none;
   margin-bottom: 1em;

@@ -9,7 +9,11 @@ interface ButtonProp {
 
 export const MyButton = ({ title, onClickBtn }: ButtonProp) => {
   return (
-    <StyledButtonType1 whileTap={{ scale: 1.1 }} onClick={onClickBtn}>
+    <StyledButtonType1
+      whileTap={{ scale: 1.1 }}
+      onClick={onClickBtn}
+      className="btn-type1"
+    >
       {title}
     </StyledButtonType1>
   );

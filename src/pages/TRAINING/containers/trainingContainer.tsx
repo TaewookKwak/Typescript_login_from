@@ -1,35 +1,165 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TrainingBoxView from "@/pages/TRAINING/views/trainingBoxView";
 import TrainingCardView from "@/pages/TRAINING/views/trainingCardView";
 import TrainingCardInfoView from "@/pages/TRAINING/views/trainingCardInfoView";
+import Container from "@/components/container";
+import { AgGrid } from "@/components/agGrid";
+import { MyButton } from "@/components/MyButton";
 export interface FileListInterface {
   filename: string;
   size: string;
 }
 
+type onClickRow = (e: any, idx: string) => void;
+interface DatasetRowData {
+  id: string;
+  scenarioName: string;
+  siteId: string;
+  buildingId: string;
+  floor: string;
+  route_wp: string;
+  date: string;
+  Checked?: string;
+}
+
+type detailProp = {
+  [key: string]: string;
+};
+
 const FAKE_JSON_DATA = require("@/assets/json/fake.json");
 
+const column1 = [
+  {
+    headerName: "ID",
+    field: "id",
+    headerCheckboxSelection: true, // 헤더에도 checkbox 추가
+    checkboxSelection: true, // check box 추가
+    cellStyle: { fontFamily: "Pretendard" },
+  },
+  {
+    headerName: "시나리오 이름",
+    field: "scenarioName",
+    cellStyle: { fontFamily: "Pretendard" },
+  },
+  {
+    headerName: "사이트 ID",
+    field: "siteId",
+    cellStyle: { fontFamily: "Pretendard" },
+  },
+  {
+    headerName: "건물 ID",
+    field: "buildingId",
+    cellStyle: { fontFamily: "Pretendard" },
+  },
+  {
+    headerName: "층",
+    field: "floor",
+    cellStyle: { fontFamily: "Pretendard" },
+  },
+  {
+    headerName: "Route_wp",
+    field: "route_wp",
+    cellStyle: { fontFamily: "Pretendard" },
+  },
+  {
+    headerName: "날짜",
+    field: "date",
+    cellStyle: { fontFamily: "Pretendard" },
+  },
+];
+
 const TrainingContainer = () => {
-  const btnList: string[] = ["Run Training", "Delete Dataset"];
-  const btnList2: string[] = ["Cancel Training", "Delete Dataset"];
-  const fileList: Array<FileListInterface> = [
-    {
-      filename: ".csv",
-      size: "20KB",
-    },
-    {
-      filename: "1.csv",
-      size: "20KB",
-    },
-    {
-      filename: "2.csv",
-      size: "20KB",
-    },
-  ];
+  const [datasetRowData, setDatasetRowData] = useState<DatasetRowData[]>([]);
+  const [datasetDetails, setDatasetDetails] = useState<detailProp>({});
+  const [processedRowData, setProcessedRowData] = useState<DatasetRowData[]>(
+    []
+  );
+  const [processedDetails, setProcessedDetails] = useState<detailProp>({});
+  const [gridApi, setGridApi] = useState<{ [key: string]: any }>({});
+  // const btnList: string[] = ["Run Training", "Delete Dataset"];
+  // const btnList2: string[] = ["Cancel Training", "Delete Dataset"];
+  // const fileList: Array<FileListInterface> = [
+  //   {
+  //     filename: ".csv",
+  //     size: "20KB",
+  //   },
+  //   {
+  //     filename: "1.csv",
+  //     size: "20KB",
+  //   },
+  //   {
+  //     filename: "2.csv",
+  //     size: "20KB",
+  //   },
+  // ];
+
+  const onClickBtn = (e: React.MouseEvent<HTMLElement>) => {
+    console.log(gridApi.getSelectedRows());
+  };
+
+  const onClickRow: onClickRow = (e: any, idx: string) => {
+    const rowData = e.data;
+
+    if (JSON.stringify(rowData) === JSON.stringify(datasetDetails)) {
+      setDatasetDetails({});
+      return;
+    }
+
+    if (JSON.stringify(rowData) === JSON.stringify(processedDetails)) {
+      setProcessedDetails({});
+      return;
+    }
+
+    if (idx === "1") {
+      setDatasetDetails({ ...rowData });
+    } else if (idx === "2") {
+      setProcessedDetails({ ...rowData });
+    }
+  };
+
+  useEffect(() => {
+    setDatasetRowData(FAKE_JSON_DATA);
+  }, []);
 
   return (
-    <main>
-      <TrainingBoxView />
+    <main className="mainContainer">
+      {/* 학습 데이터세트 */}
+      <div className="containers">
+        <Container title="학습 데이터세트 목록" addedCls="flex7">
+          <AgGrid
+            setGridApi={setGridApi}
+            gridApi={gridApi}
+            onClickRow={onClickRow}
+            data={datasetRowData}
+            setData={setDatasetRowData}
+            column={column1}
+            idx="1"
+          />
+          <div className="ag-btn-container">
+            <MyButton title="Run Training" onClickBtn={onClickBtn} />
+            <MyButton title="Delete" onClickBtn={onClickBtn} />
+          </div>
+        </Container>
+      </div>
+      {/* 훛리된 데이터세트 */}
+      <div className="containers">
+        <Container title="후처리된 데이터세트" addedCls="flex7">
+          <AgGrid
+            setGridApi={setGridApi}
+            gridApi={gridApi}
+            onClickRow={onClickRow}
+            data={datasetRowData}
+            setData={setDatasetRowData}
+            column={column1}
+            idx="2"
+          />
+          <div className="ag-btn-container">
+            <MyButton title="Cancel Training" onClickBtn={onClickBtn} />
+            <MyButton title="Delete" onClickBtn={onClickBtn} />
+          </div>
+        </Container>
+      </div>
+      {/* <TrainingBoxView />
       <div className="flex-column">
         <div className="flex-row">
           <TrainingCardView
@@ -53,7 +183,7 @@ const TrainingContainer = () => {
           />
           <TrainingCardInfoView title="모델정보" fileList={fileList} />
         </div>
-      </div>
+      </div> */}
     </main>
   );
 };

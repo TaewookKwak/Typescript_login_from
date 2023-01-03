@@ -73,6 +73,11 @@
   margin-left: 1em;
 }
 
+/* 잡 */
+.overflow-visible {
+  overflow: visible;
+}
+
 @media (max-width: 1010px) {
   .containers {
     display: block;
@@ -102,5 +107,15 @@
   header {
     display: flex !important;
     flex-direction: column !important;
+  }
+  .ag-btn-container {
+    display: block;
+    position: relative;
+    bottom: 0;
+    height: auto;
+  }
+
+  .btn-type1 {
+    margin-top: 1em;
   }
 }

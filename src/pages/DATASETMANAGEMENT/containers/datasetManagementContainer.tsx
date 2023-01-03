@@ -114,6 +114,17 @@ const DatasetManagementContainer = () => {
 
   const onClickRow: onClickRow = (e: any, idx: string) => {
     const rowData = e.data;
+
+    if (JSON.stringify(rowData) === JSON.stringify(datasetDetails)) {
+      setDatasetDetails({});
+      return;
+    }
+
+    if (JSON.stringify(rowData) === JSON.stringify(processedDetails)) {
+      setProcessedDetails({});
+      return;
+    }
+
     if (idx === "1") {
       setDatasetDetails({ ...rowData });
     } else if (idx === "2") {
@@ -226,7 +237,7 @@ const DatasetManagementContainer = () => {
               gridApi={gridApi3}
               onClickRow={onClickRow}
               data={actorRowData}
-              setData={setActorRowData}
+              // setData={setActorRowData}
               column={column3}
             />
           </Container>

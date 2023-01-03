@@ -23,7 +23,7 @@ interface Dragover {
 }
 
 interface onDelete {
-  (file: File): void;
+  (file: File, index: number): void;
 }
 
 export const MyUpload: React.FC<Dragover> = ({ dragover }) => {
@@ -50,9 +50,24 @@ export const MyUpload: React.FC<Dragover> = ({ dragover }) => {
     e.target.value = "";
   };
 
-  const onDelete: onDelete = (file) => {
+  const onDelete: onDelete = async (file, index) => {
     const updatedList = [...fileList];
     updatedList.splice(fileList?.indexOf(file), 1);
+
+    await animation.start((_index): any => {
+      if (index === _index) {
+        return {
+          opacity: 0,
+          x: -1000,
+        };
+      } else {
+        return {
+          opacity: 1,
+          // x: 100,
+        };
+      }
+    });
+
     setFileList(updatedList);
   };
 
@@ -94,6 +109,12 @@ export const MyUpload: React.FC<Dragover> = ({ dragover }) => {
       </MyPortal>
     );
   }
+
+  const item = {
+    // hidden: { x: -60, opacity: 0 },
+    visible: { x: 0, opacity: 1 },
+  };
+
   return (
     <>
       <StyledUploadContainer
@@ -129,9 +150,14 @@ export const MyUpload: React.FC<Dragover> = ({ dragover }) => {
           return (
             <AnimatePresence exitBeforeEnter={true}>
               <StyledUploadListContainer
+                custom={index}
                 key={file.name}
                 animate={animation}
-                exit={{ opacity: 0, translateX: -200 }}
+                variants={item}
+                transition={{
+                  duration: 0.3,
+                }}
+                // exit={{ opacity: 0, translateX: -200 }}
               >
                 <div
                   style={{
@@ -151,29 +177,12 @@ export const MyUpload: React.FC<Dragover> = ({ dragover }) => {
                   whileTap={{
                     scale: 0.9,
                   }}
-                  // onTap={async (e, info) => {
-                  //   await animation.start((j) => {
-                  //     if (i === j) {
-                  //       console.log("here");
-                  //       return {
-                  //         opacity: 0,
-                  //         x: -100,
-                  //         transition: { delay: i * 0.3 }
-                  //       };
-                  //     } else {
-                  //       return {
-                  //         opacity: 1
-                  //       };
-                  //     }
-                  //   });
-                  //   setArr(arr.filter((item) => item.id !== id));
-                  // }}
                 >
                   <FontAwesomeIcon
                     icon={faTrash}
                     className="clickable"
                     size="1x"
-                    onClick={() => onDelete(file)}
+                    onClick={() => onDelete(file, index)}
                   />
                 </motion.div>
               </StyledUploadListContainer>

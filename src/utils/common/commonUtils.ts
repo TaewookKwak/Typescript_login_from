@@ -1,4 +1,9 @@
 import { COLOR } from "./../../constants/constant";
+
+interface AnyObject {
+  [key: string]: any;
+}
+
 /**
  * 빈 객체 여부 체크
  * @author 곽태욱
@@ -69,4 +74,15 @@ export const initTrColor = (ref: any) => {
   allRef.forEach((element: HTMLTableElement) => {
     element.style.backgroundColor = "transparent";
   });
+};
+
+export const isTwoObjectsTheSame = (first: AnyObject, second: AnyObject) => {
+  let first_sort = Object.keys(first)
+    .sort()
+    .reduce((obj: AnyObject, key) => ((obj[key] = first[key]), obj), {});
+  let second_sort = Object.keys(second)
+    .sort()
+    .reduce((obj: AnyObject, key) => ((obj[key] = second[key]), obj), {});
+
+  return JSON.stringify(first_sort) === JSON.stringify(second_sort);
 };
