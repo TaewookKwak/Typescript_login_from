@@ -20,7 +20,7 @@ const Header = () => {
     const pages = event.parentElement?.children;
   };
   return (
-    <header ref={header}>
+    <header className="main-header" ref={header}>
       <div className="header_title">
         <img className="icon" src={ICON} alt="" />
         {/* <h1>측위알고리즘 시험 검증 시스템</h1> */}

@@ -125,13 +125,6 @@ const ManagementContainer = () => {
       placeholder: "입력해주세요",
       isFocus: false,
     },
-    // {
-    //   name: "sizeoflocation",
-    //   label: "장소크기",
-    //   value: "",
-    //   placeholder: "입력해주세요",
-    //   isFocus: false,
-    // },
   ]);
   const onClickRow: onClickRow = (e: any, idx: string) => {};
 
@@ -142,7 +135,7 @@ const ManagementContainer = () => {
     <main className="mainContainer">
       <div className="containers">
         <Container title="수집 작업 목록" addedCls="flex5 overflow-visible">
-          <MyInputType1 payload={payload} setPayload={setPayload} />
+          {/* <MyInputType1 payload={payload} setPayload={setPayload} /> */}
           <MyDropdown payload={dropDown} setPayload={setDropDown} />
         </Container>
         <Container

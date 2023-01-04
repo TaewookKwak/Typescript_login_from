@@ -25,7 +25,7 @@ const StyledButtonType1 = styled(motion.button)`
   font-weight: 600;
   color: white;
   padding: 0.7em 1em;
-  margin-right: 1em;
+  margin-left: 1em;
   border: none;
   border-radius: 10px;
   &:hover {
