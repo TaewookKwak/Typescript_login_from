@@ -104,9 +104,10 @@
     font-size: 0.6em !important;
   }
 
-  header {
+  .main-header {
     display: flex !important;
     flex-direction: column !important;
+    height: fit-content !important ;
   }
   .ag-btn-container {
     display: block;

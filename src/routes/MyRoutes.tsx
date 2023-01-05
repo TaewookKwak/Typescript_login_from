@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import MyLayout from "@/routes/MyLayout";
 import RequireAuth from "@/routes/RequireAuth";
+import { SocketContext } from "@/contexts/ContextSocketPriovider";
+import { isEmpty } from "@/utils/common/commonUtils";
 
 // lazy 추가 221005
 const DatasetManagement = React.lazy(
@@ -16,6 +18,8 @@ const Management = React.lazy(() => import("@/pages/MANAGEMENT/management"));
 const ErrorPage = React.lazy(() => import("@pages/ETC/ErrorPage"));
 
 const MyRoutes = () => {
+  const webSocket = useContext(SocketContext);
+
   return (
     <Routes>
       <Route path="/" element={<MyLayout />}>

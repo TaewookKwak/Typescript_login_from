@@ -1,9 +1,14 @@
 import { MyButton } from "@/components/MyButton";
+import MyPortal from "@/components/MyPortal";
 import { AgGrid } from "@/components/agGrid";
 import Container from "@/components/container";
+import LoadingSpinner from "@/components/loadingSpinner";
 import { isEmpty } from "@/utils/common/commonUtils";
+import { api, getDatasetList, getDatasetListInfo } from "@services/api/api";
+import { ServerResponse } from "http";
 
 import React, { useEffect, useState } from "react";
+import { UseQueryOptions, useQuery, useQueryClient } from "react-query";
 
 export interface DatasetRowData {
   name: string;
@@ -30,11 +35,33 @@ type onClickRow = (e: any, idx: string) => void;
 type detailProp = {
   [key: string]: string;
 };
+interface DatasetListProps {
+  data: RandomObjectProps[];
+  result: string;
+}
+
+interface DatasetListInfoProps {
+  dataset_name: string;
+  date: string;
+  equipments: string;
+  num_actions: string;
+  num_actors: string;
+  place: string;
+  place_dimension: string;
+  total_frames: string;
+  total_rgb_video_bytes: string;
+  total_skeleton_bytes: string;
+  result: string;
+}
+
+interface RandomObjectProps {
+  [key: string]: any;
+}
 
 const column1 = [
   {
     headerName: "이름",
-    field: "name",
+    field: "dataset_name",
     headerCheckboxSelection: true, // 헤더에도 checkbox 추가
     checkboxSelection: true, // check box 추가
     cellStyle: { fontFamily: "Pretendard" },
@@ -46,12 +73,17 @@ const column1 = [
   },
   {
     headerName: "총 프레임 수",
-    field: "totalframe",
+    field: "total_frames",
     cellStyle: { fontFamily: "Pretendard" },
   },
   {
     headerName: "실험자 수",
-    field: "totalparticitant",
+    field: "num_actors",
+    cellStyle: { fontFamily: "Pretendard" },
+  },
+  {
+    headerName: "액션 수",
+    field: "num_actions",
     cellStyle: { fontFamily: "Pretendard" },
   },
 ];
@@ -95,6 +127,8 @@ const column3 = [
 ];
 
 const DatasetManagementContainer = () => {
+  const queryClient = useQueryClient();
+
   // 데이터세트 목록
   const [datasetRowData, setDatasetRowData] = useState<DatasetRowData[]>([]);
   // 데이터세트 상세 정보
@@ -111,6 +145,31 @@ const DatasetManagementContainer = () => {
   const [gridApi, setGridApi] = useState<{ [key: string]: any }>({});
   const [gridApi2, setGridApi2] = useState<{ [key: string]: any }>({});
   const [gridApi3, setGridApi3] = useState<{ [key: string]: any }>({});
+
+  // use-query
+  const datasetQuery = useQuery<DatasetListProps>(
+    "datasetList",
+    getDatasetList,
+    {
+      refetchOnWindowFocus: false,
+      retry: 0,
+      // enabled: false,
+    }
+  );
+
+  const datasetListQuery = useQuery<DatasetListInfoProps>(
+    "datasetListInfo",
+    () =>
+      getDatasetListInfo({
+        group: "group",
+        dataset_name: datasetDetails.dataset_name,
+      }),
+    {
+      refetchOnWindowFocus: false,
+      retry: 0,
+      enabled: !isEmpty(datasetDetails),
+    }
+  );
 
   const onClickRow: onClickRow = (e: any, idx: string) => {
     const rowData = e.data;
@@ -136,6 +195,14 @@ const DatasetManagementContainer = () => {
     console.log(gridApi.getSelectedRows());
   };
 
+  const onRefresh = async (key: string) => {
+    if (key === "datasetList") {
+      queryClient.refetchQueries("datasetList");
+    } else if (key === "datasetListInfo") {
+      queryClient.refetchQueries("datasetListInfo");
+    }
+  }; // 리프레쉬 하는법
+
   useEffect(() => {
     const dataset = require("@/assets/json/dataset.json");
     const dataset2 = require("@/assets/json/dataset2.json");
@@ -144,6 +211,18 @@ const DatasetManagementContainer = () => {
     setProcessedRowData(dataset2);
     setActorRowData(actorlist);
   }, []);
+
+  if (datasetQuery.isLoading) {
+    return (
+      <MyPortal selector="#portal">
+        <LoadingSpinner />
+      </MyPortal>
+    );
+  }
+
+  if (datasetQuery.isError) {
+    return <h4>Something went wrong !!</h4>;
+  }
 
   return (
     <main className="mainContainer">
@@ -161,7 +240,7 @@ const DatasetManagementContainer = () => {
             setGridApi={setGridApi}
             gridApi={gridApi}
             onClickRow={onClickRow}
-            data={datasetRowData}
+            data={datasetQuery?.data?.data}
             setData={setDatasetRowData}
             column={column1}
             idx="1"
@@ -177,38 +256,44 @@ const DatasetManagementContainer = () => {
             cls="basicContainer2nd"
           >
             <div className="detailContent">
-              <span>장소</span>
-              <span>대전영상문화원</span>
+              <span>이름</span>
+              <span>{datasetListQuery?.data?.dataset_name}</span>
             </div>
-
-            <div className="detailContent">
-              <span>실험장비</span>
-              <span>Motion Analysis Camera 26대, Gopro Camera 6대</span>
-            </div>
-
             <div className="detailContent">
               <span>실험기간</span>
-              <span>2022. 11. 25 ~ 20 (5 Days)</span>
+              <span>{datasetListQuery?.data?.date}</span>
             </div>
-
             <div className="detailContent">
-              <span>RGB 영상 규모</span>
-              <span>2.8 TB</span>
+              <span>실험장비</span>
+              <span>{datasetListQuery?.data?.equipments}</span>
             </div>
-
             <div className="detailContent">
-              <span>RGB 영상 메이커</span>
-              <span>{datasetDetails.name}</span>
+              <span>액션 수</span>
+              <span>{datasetListQuery?.data?.num_actions}</span>
             </div>
-
             <div className="detailContent">
-              <span>RGB 영상 모델</span>
-              <span>{datasetDetails.totalframe}</span>
+              <span>액터 수</span>
+              <span>{datasetListQuery?.data?.num_actors}</span>
             </div>
-
             <div className="detailContent">
-              <span>RGB 영상 가격</span>
-              <span>{datasetDetails.totalparticitant}</span>
+              <span>장소</span>
+              <span>{datasetListQuery?.data?.place}</span>
+            </div>
+            <div className="detailContent">
+              <span>장소 크기</span>
+              <span>{datasetListQuery?.data?.place_dimension}</span>
+            </div>
+            <div className="detailContent">
+              <span>총 RGB 영상 규모</span>
+              <span>{datasetListQuery?.data?.total_rgb_video_bytes}</span>
+            </div>
+            <div className="detailContent">
+              <span>총 Skeleton 규모</span>
+              <span>{datasetListQuery?.data?.total_rgb_video_bytes}</span>
+            </div>
+            <div className="detailContent">
+              <span>총 프레임 수</span>
+              <span>{datasetListQuery?.data?.total_frames}</span>
             </div>
           </Container>
         )}

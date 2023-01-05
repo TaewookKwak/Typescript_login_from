@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "@/App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import ContextSocketPriovider from "@/contexts/ContextSocketPriovider";
 ReactDOM.render(
   <React.StrictMode>
     <div id="portal" />
