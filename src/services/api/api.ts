@@ -7,11 +7,15 @@ interface PayloadDataset {
 
 interface PayloadDatasetInfo {
   group?: string;
-  dataset_name?: string;
+  dataset_name?: string | null | undefined;
+}
+
+interface PayloadActorList extends PayloadDatasetInfo {
+  action_name: string;
 }
 
 export const api = axios.create({
-  baseURL: "http://192.168.219.118:8093",
+  baseURL: "http://192.168.219.204:8093",
   timeout: 5000,
   headers: {
     Accept: "application/json",
@@ -58,6 +62,26 @@ export const getDatasetList = async () => {
 export const getDatasetListInfo = async (payload: PayloadDatasetInfo) => {
   return await api
     .get(`/api/action/get-dataset-info`, {
+      params: {
+        ...payload,
+      },
+    })
+    .then((res: any) => res.data);
+};
+
+export const getActionList = async (payload: PayloadDatasetInfo) => {
+  return await api
+    .get(`/api/action/get-action-list`, {
+      params: {
+        ...payload,
+      },
+    })
+    .then((res: any) => res.data);
+};
+
+export const getActorList = async (payload: PayloadActorList) => {
+  return await api
+    .get(`/api/action/get-action-actor-list`, {
       params: {
         ...payload,
       },

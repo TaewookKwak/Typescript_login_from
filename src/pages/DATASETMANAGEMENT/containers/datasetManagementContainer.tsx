@@ -4,7 +4,13 @@ import { AgGrid } from "@/components/agGrid";
 import Container from "@/components/container";
 import LoadingSpinner from "@/components/loadingSpinner";
 import { isEmpty } from "@/utils/common/commonUtils";
-import { api, getDatasetList, getDatasetListInfo } from "@services/api/api";
+import {
+  api,
+  getActionList,
+  getActorList,
+  getDatasetList,
+  getDatasetListInfo,
+} from "@services/api/api";
 import { ServerResponse } from "http";
 
 import React, { useEffect, useState } from "react";
@@ -60,7 +66,7 @@ interface RandomObjectProps {
 
 const column1 = [
   {
-    headerName: "이름",
+    headerName: "데이터 세트",
     field: "dataset_name",
     headerCheckboxSelection: true, // 헤더에도 checkbox 추가
     checkboxSelection: true, // check box 추가
@@ -90,20 +96,25 @@ const column1 = [
 
 const column2 = [
   {
-    headerName: "이름",
-    field: "name",
+    headerName: "데이터 세트",
+    field: "dataset_name",
     headerCheckboxSelection: true, // 헤더에도 checkbox 추가
     checkboxSelection: true, // check box 추가
     cellStyle: { fontFamily: "Pretendard" },
   },
   {
+    headerName: "액션",
+    field: "action_name",
+    cellStyle: { fontFamily: "Pretendard" },
+  },
+  {
     headerName: "총 프레임 수",
-    field: "totalframe",
+    field: "total_frames",
     cellStyle: { fontFamily: "Pretendard" },
   },
   {
     headerName: "5개 동작 프레임 수",
-    field: "fiveposeframe",
+    field: "takes_frames",
     cellStyle: { fontFamily: "Pretendard" },
   },
 ];
@@ -111,17 +122,17 @@ const column2 = [
 const column3 = [
   {
     headerName: "액터",
-    field: "actor",
+    field: "actor_name",
     cellStyle: { fontFamily: "Pretendard" },
   },
   {
     headerName: "총 프레임 수",
-    field: "totalframe",
+    field: "total_frames",
     cellStyle: { fontFamily: "Pretendard" },
   },
   {
     headerName: "take 수",
-    field: "take",
+    field: "num_takes",
     cellStyle: { fontFamily: "Pretendard" },
   },
 ];
@@ -138,7 +149,7 @@ const DatasetManagementContainer = () => {
     []
   );
 
-  const [processedDetails, setProcessedDetails] = useState<detailProp>({});
+  const [actionDetails, setActionDetails] = useState<detailProp>({});
   // 액터 목록
   const [actorRowData, setActorRowData] = useState<ActorRowData[]>([]);
   // ag-grid 테이블 API 목록
@@ -158,7 +169,7 @@ const DatasetManagementContainer = () => {
   );
 
   const datasetListQuery = useQuery<DatasetListInfoProps>(
-    "datasetListInfo",
+    ["datasetListInfo", datasetDetails],
     () =>
       getDatasetListInfo({
         group: "group",
@@ -171,6 +182,35 @@ const DatasetManagementContainer = () => {
     }
   );
 
+  const actionListQuery = useQuery<DatasetListProps>(
+    ["actionList", datasetDetails],
+    () =>
+      getActionList({
+        group: "group",
+        dataset_name: datasetDetails.dataset_name,
+      }),
+    {
+      refetchOnWindowFocus: false,
+      retry: 0,
+      enabled: !isEmpty(datasetDetails),
+    }
+  );
+
+  const actionActorListQuery = useQuery<DatasetListProps>(
+    ["actionList", actionDetails],
+    () =>
+      getActorList({
+        group: "group",
+        dataset_name: datasetDetails?.dataset_name,
+        action_name: actionDetails?.action_name,
+      }),
+    {
+      refetchOnWindowFocus: false,
+      retry: 0,
+      enabled: !isEmpty(actionDetails),
+    }
+  );
+
   const onClickRow: onClickRow = (e: any, idx: string) => {
     const rowData = e.data;
 
@@ -179,15 +219,15 @@ const DatasetManagementContainer = () => {
       return;
     }
 
-    if (JSON.stringify(rowData) === JSON.stringify(processedDetails)) {
-      setProcessedDetails({});
+    if (JSON.stringify(rowData) === JSON.stringify(actionDetails)) {
+      setActionDetails({});
       return;
     }
 
     if (idx === "1") {
       setDatasetDetails({ ...rowData });
     } else if (idx === "2") {
-      setProcessedDetails({ ...rowData });
+      setActionDetails({ ...rowData });
     }
   };
 
@@ -299,35 +339,37 @@ const DatasetManagementContainer = () => {
         )}
       </div>
       {/* 데이터세트 목록(전처리 후) + 상세 정보 */}
-      <div className="containers">
-        <Container title="데이터세트 목록(전처리 후)" addedCls="flex7">
-          <AgGrid
-            setGridApi={setGridApi2}
-            gridApi={gridApi2}
-            onClickRow={onClickRow}
-            data={processedRowData}
-            setData={setProcessedRowData}
-            column={column2}
-            idx="2"
-          />
-        </Container>
-        {!isEmpty(processedDetails) && (
-          <Container
-            title="001_standing"
-            addedCls="flex3"
-            cls="basicContainer2nd"
-          >
+      {!isEmpty(datasetDetails) && (
+        <div className="containers">
+          <Container title="데이터세트 목록(전처리 후)" addedCls="flex7">
             <AgGrid
-              setGridApi={setGridApi3}
-              gridApi={gridApi3}
+              setGridApi={setGridApi2}
+              gridApi={gridApi2}
               onClickRow={onClickRow}
-              data={actorRowData}
-              // setData={setActorRowData}
-              column={column3}
+              data={actionListQuery?.data?.data}
+              setData={setProcessedRowData}
+              column={column2}
+              idx="2"
             />
           </Container>
-        )}
-      </div>
+          {!isEmpty(actionDetails) && (
+            <Container
+              title="001_standing"
+              addedCls="flex3"
+              cls="basicContainer2nd"
+            >
+              <AgGrid
+                setGridApi={setGridApi3}
+                gridApi={gridApi3}
+                onClickRow={onClickRow}
+                data={actionActorListQuery?.data?.data}
+                // setData={setActorRowData}
+                column={column3}
+              />
+            </Container>
+          )}
+        </div>
+      )}
     </main>
   );
 };

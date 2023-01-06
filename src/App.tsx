@@ -17,7 +17,7 @@ function App() {
   // const queryClient = useQueryClient();
 
   useEffect(() => {
-    const webSocket = socketIOClient("http://192.168.219.118:8093/");
+    const webSocket = socketIOClient("http://192.168.219.204:8093/");
     webSocket.on("updateSensorData", (data) => {
       client.setQueryData("sensorData", data);
     });
