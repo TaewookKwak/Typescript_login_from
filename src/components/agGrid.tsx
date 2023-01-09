@@ -21,6 +21,7 @@ interface AgGridProps {
   setData?: any;
   column: { [index: string]: any }[];
   idx?: string;
+  type?: any;
 }
 
 export const AgGrid: React.FC<AgGridProps> = ({
@@ -30,6 +31,7 @@ export const AgGrid: React.FC<AgGridProps> = ({
   data,
   column,
   idx = "0",
+  type = "single",
 }) => {
   const gridRef = useRef<any>();
 
@@ -68,7 +70,7 @@ export const AgGrid: React.FC<AgGridProps> = ({
         columnDefs={column} // Column Defs for Columns
         defaultColDef={defaultColDef} // Default Column Properties
         animateRows={true} // Optional - set to 'true' to have rows animate when sorted
-        rowSelection="multiple" // Options - allows click selection of rows
+        rowSelection={type} // Options - allows click selection of rows
         onCellClicked={(e) => onClickRow(e, idx)} // Optional - registering for Grid Event
         sideBar={{
           toolPanels: ["columns", "filters"],

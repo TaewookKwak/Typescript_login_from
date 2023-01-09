@@ -78,6 +78,10 @@
   overflow: visible;
 }
 
+.display-none {
+  display: none !important;
+}
+
 @media (max-width: 1010px) {
   .containers {
     display: block;

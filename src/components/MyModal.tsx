@@ -83,6 +83,44 @@ export const MyModalNoFooter: React.FC<Props> = ({
   );
 };
 
+export const MyModalInfo: React.FC<Props> = ({ title, children }) => {
+  return (
+    <ModalContainer id="modal">
+      <ModalView
+        initial={{
+          opacity: 0,
+          scale: 0,
+        }}
+        animate={{
+          opacity: 1,
+          scale: 1,
+        }}
+        exit={{
+          opacity: 0,
+          scale: 0,
+        }}
+      >
+        <header>
+          <h2>{title}</h2>
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.2 }}
+            onClick={() => {
+              const modelElement = document.getElementById("modal");
+              if (modelElement) {
+                modelElement.classList.add("display-none");
+              }
+            }}
+          >
+            <FontAwesomeIcon size="2x" icon={faXmark} color="#9898a0" />
+          </motion.button>
+        </header>
+        <main>{children}</main>
+      </ModalView>
+    </ModalContainer>
+  );
+};
+
 const ModalContainer = styled(motion.ul)<any>`
   position: fixed;
   display: flex;

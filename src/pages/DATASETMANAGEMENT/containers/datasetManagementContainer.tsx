@@ -1,4 +1,5 @@
 import { MyButton } from "@/components/MyButton";
+import { MyModalInfo, MyModalNoFooter } from "@/components/MyModal";
 import MyPortal from "@/components/MyPortal";
 import { AgGrid } from "@/components/agGrid";
 import Container from "@/components/container";
@@ -11,7 +12,7 @@ import {
   getDatasetList,
   getDatasetListInfo,
 } from "@services/api/api";
-import { ServerResponse } from "http";
+import { AnimatePresence } from "framer-motion";
 
 import React, { useEffect, useState } from "react";
 import { UseQueryOptions, useQuery, useQueryClient } from "react-query";
@@ -119,49 +120,65 @@ const column2 = [
   },
 ];
 
-const column3 = [
-  {
-    headerName: "액터",
-    field: "actor_name",
-    cellStyle: { fontFamily: "Pretendard" },
-  },
-  {
-    headerName: "총 프레임 수",
-    field: "total_frames",
-    cellStyle: { fontFamily: "Pretendard" },
-  },
-  {
-    headerName: "take 수",
-    field: "num_takes",
-    cellStyle: { fontFamily: "Pretendard" },
-  },
-];
-
 const DatasetManagementContainer = () => {
+  const column3 = [
+    {
+      headerName: "액터",
+      field: "actor_name",
+      checkboxSelection: true, // check box 추가
+      cellStyle: { fontFamily: "Pretendard" },
+    },
+    {
+      headerName: "총 프레임 수",
+      field: "total_frames",
+      cellStyle: { fontFamily: "Pretendard" },
+    },
+    {
+      headerName: "take 수",
+      field: "num_takes",
+      cellStyle: { fontFamily: "Pretendard" },
+    },
+    {
+      field: "athlete",
+      cellRenderer: () => {
+        return (
+          <>
+            <MyButton
+              title="영상보기"
+              size="s"
+              onClickBtn={() => {
+                const modelElement = document.getElementById("modal");
+                modelElement?.classList.remove("display-none");
+                setIsVideoPlayerOpen(true);
+              }}
+            />
+            {/* <MyPortal selector="#portal">
+              <MyModalInfo></MyModalInfo>
+            </MyPortal> */}
+          </>
+        );
+      },
+    },
+  ];
   const queryClient = useQueryClient();
 
-  // 데이터세트 목록
-  const [datasetRowData, setDatasetRowData] = useState<DatasetRowData[]>([]);
   // 데이터세트 상세 정보
   const [datasetDetails, setDatasetDetails] = useState<detailProp>({});
-  // 데이터세트 목록2
-  const [processedRowData, setProcessedRowData] = useState<ProcessedRowData[]>(
-    []
-  );
-
+  // 액션 상세 정보
   const [actionDetails, setActionDetails] = useState<detailProp>({});
-  // 액터 목록
-  const [actorRowData, setActorRowData] = useState<ActorRowData[]>([]);
   // ag-grid 테이블 API 목록
   const [gridApi, setGridApi] = useState<{ [key: string]: any }>({});
   const [gridApi2, setGridApi2] = useState<{ [key: string]: any }>({});
   const [gridApi3, setGridApi3] = useState<{ [key: string]: any }>({});
+
+  const [isVideoPlayerOpen, setIsVideoPlayerOpen] = useState(false);
 
   // use-query
   const datasetQuery = useQuery<DatasetListProps>(
     "datasetList",
     getDatasetList,
     {
+      staleTime: 10000,
       refetchOnWindowFocus: false,
       retry: 0,
       // enabled: false,
@@ -176,6 +193,7 @@ const DatasetManagementContainer = () => {
         dataset_name: datasetDetails.dataset_name,
       }),
     {
+      staleTime: 10000,
       refetchOnWindowFocus: false,
       retry: 0,
       enabled: !isEmpty(datasetDetails),
@@ -190,6 +208,7 @@ const DatasetManagementContainer = () => {
         dataset_name: datasetDetails.dataset_name,
       }),
     {
+      staleTime: 10000,
       refetchOnWindowFocus: false,
       retry: 0,
       enabled: !isEmpty(datasetDetails),
@@ -205,6 +224,7 @@ const DatasetManagementContainer = () => {
         action_name: actionDetails?.action_name,
       }),
     {
+      staleTime: 10000,
       refetchOnWindowFocus: false,
       retry: 0,
       enabled: !isEmpty(actionDetails),
@@ -228,6 +248,8 @@ const DatasetManagementContainer = () => {
       setDatasetDetails({ ...rowData });
     } else if (idx === "2") {
       setActionDetails({ ...rowData });
+    } else if (idx === "3") {
+      console.log(rowData, "action");
     }
   };
 
@@ -243,14 +265,14 @@ const DatasetManagementContainer = () => {
     }
   }; // 리프레쉬 하는법
 
-  useEffect(() => {
-    const dataset = require("@/assets/json/dataset.json");
-    const dataset2 = require("@/assets/json/dataset2.json");
-    const actorlist = require("@/assets/json/actorlist.json");
-    setDatasetRowData(dataset);
-    setProcessedRowData(dataset2);
-    setActorRowData(actorlist);
-  }, []);
+  // useEffect(() => {
+  //   const dataset = require("@/assets/json/dataset.json");
+  //   const dataset2 = require("@/assets/json/dataset2.json");
+  //   const actorlist = require("@/assets/json/actorlist.json");
+  //   setDatasetRowData(dataset);
+  //   setProcessedRowData(dataset2);
+  //   setActorRowData(actorlist);
+  // }, []);
 
   if (datasetQuery.isLoading) {
     return (
@@ -261,7 +283,13 @@ const DatasetManagementContainer = () => {
   }
 
   if (datasetQuery.isError) {
-    return <h4>Something went wrong !!</h4>;
+    return (
+      <AnimatePresence>
+        <MyModalInfo title="오류 메세지">
+          <h2>인터넷 상태를 확인해주세요.</h2>
+        </MyModalInfo>
+      </AnimatePresence>
+    );
   }
 
   return (
@@ -281,9 +309,9 @@ const DatasetManagementContainer = () => {
             gridApi={gridApi}
             onClickRow={onClickRow}
             data={datasetQuery?.data?.data}
-            setData={setDatasetRowData}
             column={column1}
             idx="1"
+            type="multiple"
           />
           <div className="ag-btn-container">
             <MyButton title="Action" onClickBtn={onClickBtn} />
@@ -341,20 +369,20 @@ const DatasetManagementContainer = () => {
       {/* 데이터세트 목록(전처리 후) + 상세 정보 */}
       {!isEmpty(datasetDetails) && (
         <div className="containers">
-          <Container title="데이터세트 목록(전처리 후)" addedCls="flex7">
+          <Container title="액션 목록" addedCls="flex7">
             <AgGrid
               setGridApi={setGridApi2}
               gridApi={gridApi2}
               onClickRow={onClickRow}
               data={actionListQuery?.data?.data}
-              setData={setProcessedRowData}
               column={column2}
               idx="2"
+              type="multiple"
             />
           </Container>
           {!isEmpty(actionDetails) && (
             <Container
-              title="001_standing"
+              title={actionDetails?.action_name}
               addedCls="flex3"
               cls="basicContainer2nd"
             >
@@ -365,10 +393,78 @@ const DatasetManagementContainer = () => {
                 data={actionActorListQuery?.data?.data}
                 // setData={setActorRowData}
                 column={column3}
+                idx="3"
               />
             </Container>
           )}
         </div>
+      )}
+
+      {isVideoPlayerOpen && (
+        <MyModalInfo title="영상보기">
+          <input
+            type="file"
+            accept="video/*"
+            multiple
+            onChange={(e: any) => {
+              var numberOfVideos = e.target.files.length;
+              for (var i = 0; i < numberOfVideos; i++) {
+                var file = e.target.files[i];
+                var blobURL = URL.createObjectURL(file);
+                var video = document.createElement("video");
+                video.src = blobURL;
+                video.setAttribute("controls", "");
+                video.classList.add("video");
+                var videos = document.getElementById("videos");
+                if (videos) {
+                  videos.appendChild(video);
+                }
+              }
+              // console.log(e.target.files);
+              // let file = e.target.files[0];
+              // let type = file.type;
+              // var videoNode = document.querySelector("video");
+              // if (videoNode) {
+              //   var canPlay = videoNode.canPlayType(type);
+              //   console.log(canPlay);
+              //   var fileURL = URL.createObjectURL(file);
+              //   videoNode.src = fileURL;
+              // }
+            }}
+          />
+          <div id="videos"></div>
+          <button
+            onClick={() => {
+              console.log("재생하기");
+              var videos = document.getElementsByClassName(".video");
+              console.log(videos);
+              if (videos) {
+              }
+            }}
+          >
+            재생하기
+          </button>
+          <iframe
+            src="http://lo-th.github.io/olympe/BVH_player.html"
+            title="Inline Frame Example"
+            width="1000"
+            height="600"
+          ></iframe>
+          {/* <video
+            controls
+            style={{
+              width: 500,
+            }}
+            // src="file:///C:/Users/rhkrx/OneDrive/Desktop/a.mp4"
+            // src={`http://127.0.0.1:8887/actiondata/GROUP1/ETRI_01/ch01/000_chart/tk_01/cam_01.MP4`}
+            // src={`http://192.168.219.204:8090/static/Straight Leg Raise.mp4`}
+          >
+            <source
+              src="file:///C:/Users/rhkrx/OneDrive/Desktop/a.mp4"
+              type="video/mp4"
+            />
+          </video> */}
+        </MyModalInfo>
       )}
     </main>
   );

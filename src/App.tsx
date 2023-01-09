@@ -25,6 +25,7 @@ function App() {
       webSocket.close();
     };
   }, []);
+
   return (
     // <ContextSocketPriovider>
     <QueryClientProvider client={client}>

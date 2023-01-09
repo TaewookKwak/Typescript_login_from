@@ -667,3 +667,7 @@ option {
 .dragEnter {
   opacity: 0.6;
 }
+
+#videos video {
+  width: 200px;
+}

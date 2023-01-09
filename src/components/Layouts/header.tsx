@@ -34,8 +34,6 @@ const Header = () => {
     const event = e.target as HTMLDivElement;
   };
 
-  console.log(data);
-
   return (
     <header className="main-header" ref={header}>
       <div className="header_title">
