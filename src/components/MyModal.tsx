@@ -83,7 +83,7 @@ export const MyModalNoFooter: React.FC<Props> = ({
   );
 };
 
-export const MyModalInfo: React.FC<Props> = ({ title, children }) => {
+export const MyModalInfo: React.FC<Props> = ({ title, children, onCancel }) => {
   return (
     <ModalContainer id="modal">
       <ModalView

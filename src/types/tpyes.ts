@@ -10,3 +10,5 @@ export interface ProcessedRowData {
   totalframe: number | string;
   fiveposeframe: number | string;
 }
+
+export type VideoProp = string[];

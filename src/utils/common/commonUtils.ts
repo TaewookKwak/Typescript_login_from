@@ -1,3 +1,4 @@
+import { VideoProp } from "@/types/tpyes";
 import { COLOR } from "./../../constants/constant";
 
 interface AnyObject {
@@ -85,4 +86,19 @@ export const isTwoObjectsTheSame = (first: AnyObject, second: AnyObject) => {
     .reduce((obj: AnyObject, key) => ((obj[key] = second[key]), obj), {});
 
   return JSON.stringify(first_sort) === JSON.stringify(second_sort);
+};
+
+export const videoToUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const urls: VideoProp = [];
+  let numberOfVideos = e?.target?.files?.length;
+  if (e?.target?.files?.length && numberOfVideos) {
+    for (var i = 0; i < numberOfVideos; i++) {
+      var file = e?.target?.files[i];
+      var blobURL = URL.createObjectURL(file);
+      var video = document.createElement("video");
+      video.src = blobURL;
+      urls.push(blobURL);
+    }
+  }
+  return urls;
 };

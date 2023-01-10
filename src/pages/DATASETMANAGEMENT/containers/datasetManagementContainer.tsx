@@ -4,7 +4,8 @@ import MyPortal from "@/components/MyPortal";
 import { AgGrid } from "@/components/agGrid";
 import Container from "@/components/container";
 import LoadingSpinner from "@/components/loadingSpinner";
-import { isEmpty } from "@/utils/common/commonUtils";
+import { VideoProp } from "@/types/tpyes";
+import { isEmpty, videoToUrl } from "@/utils/common/commonUtils";
 import {
   api,
   getActionList,
@@ -14,8 +15,10 @@ import {
 } from "@services/api/api";
 import { AnimatePresence } from "framer-motion";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { UseQueryOptions, useQuery, useQueryClient } from "react-query";
+import styled from "styled-components";
+import { ListFormat } from "typescript";
 
 export interface DatasetRowData {
   name: string;
@@ -161,7 +164,7 @@ const DatasetManagementContainer = () => {
     },
   ];
   const queryClient = useQueryClient();
-
+  const videoRef = useRef<any>([]);
   // 데이터세트 상세 정보
   const [datasetDetails, setDatasetDetails] = useState<detailProp>({});
   // 액션 상세 정보
@@ -172,6 +175,7 @@ const DatasetManagementContainer = () => {
   const [gridApi3, setGridApi3] = useState<{ [key: string]: any }>({});
 
   const [isVideoPlayerOpen, setIsVideoPlayerOpen] = useState(false);
+  const [videos, setVideos] = useState<VideoProp>([]);
 
   // use-query
   const datasetQuery = useQuery<DatasetListProps>(
@@ -264,15 +268,6 @@ const DatasetManagementContainer = () => {
       queryClient.refetchQueries("datasetListInfo");
     }
   }; // 리프레쉬 하는법
-
-  // useEffect(() => {
-  //   const dataset = require("@/assets/json/dataset.json");
-  //   const dataset2 = require("@/assets/json/dataset2.json");
-  //   const actorlist = require("@/assets/json/actorlist.json");
-  //   setDatasetRowData(dataset);
-  //   setProcessedRowData(dataset2);
-  //   setActorRowData(actorlist);
-  // }, []);
 
   if (datasetQuery.isLoading) {
     return (
@@ -401,55 +396,72 @@ const DatasetManagementContainer = () => {
       )}
 
       {isVideoPlayerOpen && (
-        <MyModalInfo title="영상보기">
+        <MyModalNoFooter
+          title="영상보기"
+          onCancel={() => {
+            setIsVideoPlayerOpen(false);
+            setVideos([]);
+          }}
+        >
           <input
             type="file"
             accept="video/*"
             multiple
             onChange={(e: any) => {
-              var numberOfVideos = e.target.files.length;
-              for (var i = 0; i < numberOfVideos; i++) {
-                var file = e.target.files[i];
-                var blobURL = URL.createObjectURL(file);
-                var video = document.createElement("video");
-                video.src = blobURL;
-                video.setAttribute("controls", "");
-                video.classList.add("video");
-                var videos = document.getElementById("videos");
-                if (videos) {
-                  videos.appendChild(video);
-                }
-              }
-              // console.log(e.target.files);
-              // let file = e.target.files[0];
-              // let type = file.type;
-              // var videoNode = document.querySelector("video");
-              // if (videoNode) {
-              //   var canPlay = videoNode.canPlayType(type);
-              //   console.log(canPlay);
-              //   var fileURL = URL.createObjectURL(file);
-              //   videoNode.src = fileURL;
-              // }
+              console.log(e);
+
+              // 비디오 파일 -> URL 변환
+              const urls = videoToUrl(e);
+              setVideos(urls);
+              // 초기화 : 같은 파일 구축 가능
+              e.target.value = "";
             }}
           />
-          <div id="videos"></div>
-          <button
-            onClick={() => {
-              console.log("재생하기");
-              var videos = document.getElementsByClassName(".video");
-              console.log(videos);
-              if (videos) {
-              }
-            }}
-          >
-            재생하기
-          </button>
-          <iframe
+          <VideoContainer>
+            {videos.map((list: string, index: number) => {
+              console.log(list);
+              return (
+                <video
+                  ref={(el) => (videoRef.current[index] = el)}
+                  src={list}
+                  controls
+                  style={{
+                    width: 400,
+                    margin: "1em 1em 0em 0em",
+                  }}
+                ></video>
+              );
+            })}
+          </VideoContainer>
+          {console.log(videoRef.current.length)}
+          {videos.length ? (
+            <ButtonContainer>
+              <MyButton
+                title="전체 시작하기"
+                onClickBtn={() => {
+                  videoRef.current.map((list: any) => {
+                    list.play();
+                  });
+                }}
+              />
+              <MyButton
+                title="전체 중지하기"
+                onClickBtn={() => {
+                  videoRef.current.map((list: any) => {
+                    list.pause();
+                  });
+                }}
+              />
+            </ButtonContainer>
+          ) : (
+            <></>
+          )}
+          {/* <iframe
             src="http://lo-th.github.io/olympe/BVH_player.html"
             title="Inline Frame Example"
             width="1000"
             height="600"
-          ></iframe>
+          ></iframe> */}
           {/* <video
             controls
             style={{
@@ -464,10 +476,23 @@ const DatasetManagementContainer = () => {
               type="video/mp4"
             />
           </video> */}
-        </MyModalInfo>
+        </MyModalNoFooter>
       )}
     </main>
   );
 };
+
+const VideoContainer = styled.div<any>`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 1000px;
+`;
+
+const ButtonContainer = styled.div<any>`
+  margin-top: 1em;
+`;
 
 export default DatasetManagementContainer;
